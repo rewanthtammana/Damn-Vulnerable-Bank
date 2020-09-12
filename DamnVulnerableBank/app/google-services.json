@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "932398433474",
+    "firebase_url": "https://damn-vulnerable-bank.firebaseio.com",
+    "project_id": "damn-vulnerable-bank",
+    "storage_bucket": "damn-vulnerable-bank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932398433474:android:64f0cff260d1f223f3675b",
+        "android_client_info": {
+          "package_name": "com.app.damnvulnerablebank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932398433474-59j4a17sqbf1r9m1f2eqqlreo6a5qsmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbOHG6DDa6DOcRGEg57mw9nXYXcw6la3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932398433474-59j4a17sqbf1r9m1f2eqqlreo6a5qsmt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
