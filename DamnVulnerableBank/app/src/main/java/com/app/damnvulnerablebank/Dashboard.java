@@ -16,6 +16,10 @@ public class Dashboard extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), banklogin.class));
     }
 
+    public void deeptran(View v){
+        startActivity(new Intent(getApplicationContext(), transfermoney.class));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

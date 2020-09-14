@@ -12,21 +12,135 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_marginBottom="11dp"
-        android:layout_marginTop="100dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dashboard Bank"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Logout"
-        android:textColor="@color/white"
-        android:background="@color/black"
-        android:onClick="logout"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dashboard"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:textAllCaps="true"
+            android:fontFamily="@font/muli_extrabold" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="290dp"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:background="@color/black"
+            android:onClick="logout"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/youtube"
+            android:onClick="deeptran"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/sends">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transfer Money"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/muli_extrabold"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"
+                android:padding="2dp"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/youtube"
+            android:onClick="deeptran"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/food_back">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Do"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/muli_extrabold"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"
+                android:padding="2dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/youtube"
+            android:onClick="deeptran"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/food_back">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Do"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/muli_extrabold"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"
+                android:padding="2dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/youtube"
+            android:onClick="deeptran"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/food_back">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Do"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/muli_extrabold"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"
+                android:padding="2dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/youtube"
+            android:onClick="deeptran"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/food_back">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Do"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22sp"
+                android:fontFamily="@font/muli_extrabold"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"
+                android:padding="2dp"/>
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

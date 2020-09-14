@@ -9,7 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".forgetpassword"></activity>
+        <activity android:name=".confirmtrans">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="sendmoney"
+                    android:scheme="dvba" />
+                <data
+                    android:host="sendmoney.dvba"
+                    android:scheme="https" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name=".transfermoney" />
+        <activity android:name=".forgetpassword" />
         <activity android:name=".requestpassword" />
         <activity android:name=".Dashboard" />
         <activity android:name=".signup" />
