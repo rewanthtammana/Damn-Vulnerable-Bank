@@ -20,6 +20,14 @@ public class Dashboard extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), transfermoney.class));
     }
 
+    public void secretnoteso(View v){
+        startActivity(new Intent(getApplicationContext(), passcode.class));
+    }
+
+    public void forates(View v){
+        startActivity(new Intent(getApplicationContext(), frates.class));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
