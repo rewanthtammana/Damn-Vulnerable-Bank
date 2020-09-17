@@ -3,6 +3,21 @@
 ## About application
 Damn Vulnerable Bank Android Application aims to provide an interface for everyone to get a detailed understanding with internals and security aspects of android application.
 
+## Features
+- [ ] Sign up
+- [ ] Login
+- [ ] My profile interface
+- [ ] Settings interface to update backend URL
+- [ ] Add fingerprint check before transferring/viewing funds
+- [ ] Add pin check before transferring/viewing funds
+- [ ] View balance
+- [ ] Transfer money
+- [ ] Add beneficiary
+- [ ] Delete beneficiary
+- [ ] View beneficiary
+- [ ] View transactions history
+- [ ] Download transactions history
+
 ## List of possible vulns in the application
 
 - [ ] Root and emulator detection
