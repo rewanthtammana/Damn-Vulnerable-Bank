@@ -12,6 +12,8 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - [ ] Add pin check before transferring/viewing funds
 - [ ] View balance
 - [ ] Transfer money
+  - [ ] Via manual entry
+  - [ ] Via QR scan
 - [ ] Add beneficiary
 - [ ] Delete beneficiary
 - [ ] View beneficiary
