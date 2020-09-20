@@ -24,16 +24,31 @@ router.post('/', validateAdminToken, (req, res) => {
         }
     }).then((data) => {
         if (data) {
-            Model.beneficiaries.update({
-                approved: true
-            }, {
+            Model.users.findOne({
                 where: {
-                    id: id
+                    account_number: data.beneficiary_account_number
                 }
-            }).then(() => {
-                r.status = statusCodes.SUCCESS;
-                return res.json(r);
+            }).then((data) => {
+                if (data) {
+                    Model.beneficiaries.update({
+                        approved: true
+                    }, {
+                        where: {
+                            id: id
+                        }
+                    }).then(() => {
+                        r.status = statusCodes.SUCCESS;
+                        return res.json(r);
+                    });
+                } else {
+                    r.status = statusCodes.BAD_INPUT;
+                    r.data = {
+                        "error": "Beneficiary with given account number doesn't exist"
+                    };
+                    return res.json(r);
+                }
             });
+
         } else {
             r.status = statusCodes.BAD_INPUT;
             r.data = {
