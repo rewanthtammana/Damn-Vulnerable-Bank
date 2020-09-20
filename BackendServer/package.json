@@ -1,0 +1,21 @@
+{
+  "name": "damn-vulnerable-bank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/pm2/bin/pm2 start ./bin/www",
+    "stop": "node_modules/pm2/bin/pm2 stop www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "~2.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.1",
+    "pm2": "^2.1.6",
+    "sequelize": "^6.3.5"
+  }
+}
