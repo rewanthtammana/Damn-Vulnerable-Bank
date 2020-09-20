@@ -37,3 +37,11 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - [ ] Webview integration
 - [ ] Deep links
 - [ ] IDOR
+
+## Backend to-do
+
+- [ ] Add profile and change-password routes
+- [ ] Create different secrets for admin and other users
+- [ ] Add dynamic generation of secrets to verify JWT tokens
+- [ ] Introduce bug in jwt verficiation
+- [ ] Find a way to store database and mount it while using docker
