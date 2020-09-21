@@ -3,6 +3,7 @@ version: '3'
 services:
   api:
     build: .
+    restart: always
     ports:
       - "3000:3000"
     depends_on:
@@ -17,8 +18,3 @@ services:
           MYSQL_DATABASE: 'dvba'
       volumes:
         - ./database:/docker-entrypoint-initdb.d
-      healthcheck:
-        test: ["CMD", "ping", "mysql"]
-        interval: 15s
-        timeout: 10s
-        retries: 3
