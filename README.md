@@ -45,4 +45,4 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - [ ] Add dynamic generation of secrets to verify JWT tokens
 - [ ] Introduce bug in jwt verficiation
 - [ ] Find a way to store database and mount it while using docker
-- [ ] Dockerize environment
+- [X] Dockerize environment

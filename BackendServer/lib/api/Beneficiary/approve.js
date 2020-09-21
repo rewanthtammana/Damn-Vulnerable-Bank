@@ -43,7 +43,7 @@ router.post('/', validateAdminToken, (req, res) => {
                 } else {
                     r.status = statusCodes.BAD_INPUT;
                     r.data = {
-                        "error": "Beneficiary with given account number doesn't exist"
+                        "message": "Beneficiary with given account number doesn't exist"
                     };
                     return res.json(r);
                 }
@@ -60,7 +60,7 @@ router.post('/', validateAdminToken, (req, res) => {
         console.log()
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
-            "error": err.toString()
+            "message": err.toString()
         };
         res.json(r);
     });

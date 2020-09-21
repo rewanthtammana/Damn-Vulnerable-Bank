@@ -32,7 +32,7 @@ router.post('/', validateUserToken, (req, res) => {
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
-            "error": err.toString()
+            "message": err.toString()
         };
         res.json(r);
     });

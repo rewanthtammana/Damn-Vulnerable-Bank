@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
                 }).catch((err) => {
                     r.status = statusCodes.SERVER_ERROR;
                     r.data = {
-                        "error": err.toString()
+                        "message": err.toString()
                     };
                     res.json(r);
                 });
@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
-            "error": err.toString()
+            "message": err.toString()
         };
         return res.json(r);
     });

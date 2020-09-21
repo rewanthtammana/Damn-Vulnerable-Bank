@@ -33,7 +33,7 @@ router.post("/", validateUserToken, (req, res) => {
     }).then((data) => {
         let arr = data.map((elem) => {return elem.beneficiary_account_number});
         if (arr.includes(beneficiary_account_number)) {
-            r.status = statusCodes.SUCCESS;
+            r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Account already exists in beneficiary list"
             };

@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 
             return res.json(r);
         } else {
-            r.status = statusCodes.SUCCESS;
+            r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Incorrect username or password"
             }
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
-            "error": err.toString()
+            "message": err.toString()
         };
         return res.json(r);
     });
