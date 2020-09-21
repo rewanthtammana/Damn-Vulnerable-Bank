@@ -4,10 +4,16 @@ This application starts an API server that serve incoming requests from the andr
 
 ## Installation
 
+### With docker
+- `cd BackendServer`
+- `docker-compose up`
+- `curl <IP>:<magic_port>/api/health/check`
+
+### Without docker
 - Install dependencies
     - `nodejs (v10.19.0)`
     - `npm (6.14.4)`
-    - `mysql (Ver 8.0.21-0ubuntu0.20.04.4 for Linux on x86_64 ((Ubuntu)))`
+    - `mysql (Ver 8.0.21)`
 - Update mysql configuration (username, password fields) in `development` object `config/config.json`
 - Populate database with data
     - `cat database/schema+data.sql | mysql -u root -p`

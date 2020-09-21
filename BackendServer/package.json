@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/pm2/bin/pm2 start ./bin/www",
-    "stop": "node_modules/pm2/bin/pm2 stop www"
+    "start": "node ./bin/www"
   },
   "keywords": [],
   "author": "",

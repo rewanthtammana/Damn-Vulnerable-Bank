@@ -3,7 +3,7 @@
     "username": "root",
     "password": "password",
     "database": "dvba",
-    "host": "127.0.0.1",
+    "host": "mysql",
     "dialect": "mysql"
   },
   "test": {
