@@ -3,6 +3,9 @@
     <color name="yellow">#EAC13B</color>
     <color name="black">#000000</color>
     <color name="blue">#2196f3</color>
+    <color name="kuchbhiblue">#21DFF4</color>
     <color name="white">#fff</color>
     <color name="lightblue">#b3e5fc</color>
+    <color name="purple">#673AB7</color>
+    <color name="lightpurple">#522F92</color>
 </resources>

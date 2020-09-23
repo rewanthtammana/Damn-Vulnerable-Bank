@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shadow"
+    tools:context=".sendmoney">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_marginTop="200dp"
+        android:layout_width="89dp"
+        android:layout_marginLeft="150dp"
+        android:layout_height="61dp"
+        app:srcCompat="@drawable/person" />
+
+
+    <TextView
+        android:id="@+id/actid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="155dp"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+
+    <EditText
+        android:id="@+id/edact"
+        android:layout_marginTop="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actid"
+        android:layout_marginLeft="100dp"
+        android:hint="Enter Account Number Again"
+        android:inputType="numberDecimal"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+    <EditText
+        android:id="@+id/edamt"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edact"
+        android:layout_marginLeft="140dp"
+        android:hint="Enter Amount"
+        android:inputType="numberDecimal"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle"
+        android:textColor="@color/white"
+        android:layout_below="@+id/edamt"
+        android:layout_marginTop="12dp"
+        android:onClick="sendmon"
+        android:layout_marginLeft="155dp"
+        android:text="Send Money"/>
+</RelativeLayout>

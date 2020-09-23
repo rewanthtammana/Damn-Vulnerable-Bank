@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightblue"
+    android:background="@color/kuchbhiblue"
     tools:context=".Dashboard">
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <RelativeLayout
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
         <TextView
+            android:id="@+id/dasht"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dashboard"
@@ -22,125 +30,249 @@
             android:fontFamily="@font/muli_extrabold" />
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="290dp"
-            android:text="Logout"
-            android:textColor="@color/white"
-            android:background="@color/black"
-            android:onClick="logout"
-            />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="290dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/circle"
+                android:onClick="logout"
+                android:text="Logout"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+<GridLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:rowCount="3"
+    android:columnOrderPreserved="false"
+    android:alignmentMode="alignMargins">
 
-        <RelativeLayout
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
+        
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/trans"
-            android:onClick="deeptran"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/sends">
-
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="addben"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/addben"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
+                android:text="Add Benificiary"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="mybenifs"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/benifc"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
+                android:text="View Benificiary"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="viewben"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/sends"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
                 android:text="Transfer Money"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:textSize="22sp"
-                android:fontFamily="@font/muli_extrabold"
                 android:textColor="@color/black"
-                android:layout_alignParentBottom="true"
-                android:padding="2dp"/>
+                android:textSize="14sp" />
 
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
 
-        </RelativeLayout>
-
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/secretnotes"
-            android:onClick="secretnoteso"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/secr">
-
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="balnc"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/balance"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Protected Notes"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:textSize="22sp"
-                android:fontFamily="@font/muli_extrabold"
-                android:textColor="@color/black"
                 android:layout_alignParentBottom="true"
-                android:padding="2dp"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:id="@+id/rates"
-            android:onClick="forates"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/exchange">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
+                android:text="View Balance"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="transactions"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/transactn"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Foreign Rates"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="20dp"
-                android:textSize="22sp"
-                android:fontFamily="@font/muli_extrabold"
-                android:textColor="@color/black"
                 android:layout_alignParentBottom="true"
-                android:padding="2dp"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:id="@+id/youtube"
-            android:onClick="deeptran"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/food_back">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
+                android:text="Transactions"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="benfs"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/appr"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To Do"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:textSize="22sp"
-                android:fontFamily="@font/muli_extrabold"
-                android:textColor="@color/black"
                 android:layout_alignParentBottom="true"
-                android:padding="2dp"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:id="@+id/youtube"
-            android:onClick="deeptran"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/food_back">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
+                android:text="Approve Benf"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="To Do"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:textSize="22sp"
-                android:fontFamily="@font/muli_extrabold"
-                android:textColor="@color/black"
-                android:layout_alignParentBottom="true"
-                android:padding="2dp"/>
-        </RelativeLayout>
+</GridLayout>
+
+
+
+
+
     </LinearLayout>
 
 </ScrollView>

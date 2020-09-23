@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
+    android:background="@color/kuchbhiblue"
     tools:context=".banklogin">
 
     <LinearLayout
@@ -19,10 +20,11 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="270dp"
-
-            android:src="@drawable/banklogo" />
+            android:background="@color/blue"
+            android:src="@drawable/bn" />
 
         <TextView
+            android:id="@+id/tet"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,6 +34,7 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="35sp" />
+
 
         <LinearLayout
             android:layout_width="250dp"
@@ -45,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@color/blue"
+                android:textColor="@color/white"
+                android:background="@drawable/circle"
                 android:onClick="loginpage"
                 android:text="Login" />
 
@@ -54,24 +58,50 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
-                android:background="@color/blue"
+                android:background="@drawable/circle"
                 android:onClick="signupage"
                 android:text="Signup" />
+
+
+
         </LinearLayout>
 
+
         <Button
-            android:layout_width="140dp"
-            android:textColor="@color/black"
+            android:id="@+id/healthc"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:onClick="usage"
-            android:background="@color/blue"
-            android:text="Guide" />
+            android:background="@drawable/circle"
+            android:onClick="healthcheck"
+            android:text="Health Check"
+            android:textColor="@color/white" />
+
+
+        <EditText
+            android:id="@+id/apiurl"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
+            android:hint="API URL  e.g http://127.0.0.1:8000" />
+
+        <Button
+            android:id="@+id/addapi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:background="@drawable/circle"
+            android:onClick="addapi"
+            android:text="Add API"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
+
 
 </ScrollView>

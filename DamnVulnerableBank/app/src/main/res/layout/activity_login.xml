@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    android:background="@color/blue"
     tools:context=".login">
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +20,7 @@
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
         <TextView
+            android:id="@+id/log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/login_back"
-                android:hint="Enter Email"
+                android:hint="Enter Username"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
@@ -63,7 +63,24 @@
                     android:textCursorDrawable="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
+            <RelativeLayout
+                android:id="@+id/relp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/whitecircle"
+                android:elevation="8dp"
+                android:visibility="gone"
+                android:padding="20dp">
 
+                <ProgressBar
+                    android:id="@+id/progressb"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -96,42 +113,17 @@
 
         <Button
             android:id="@+id/loginbttn"
-            android:layout_width="match_parent"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:background="#000000"
-            android:layout_marginTop="10dp"
+            android:background="@drawable/circle"
+            android:layout_marginTop="30dp"
             android:text="Login"
             android:onClick="firebaselogin"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:layout_marginTop="20dp"
-            android:text="Forgot Password"
-            android:onClick="forgets"
-            android:layout_gravity="center"
-            android:textColor="#FFFFFF"/>
-        <RelativeLayout
-            android:id="@+id/relp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:background="@drawable/whitecircle"
-            android:elevation="8dp"
-            android:visibility="gone"
-            android:padding="20dp">
 
-            <ProgressBar
-                android:id="@+id/progressb"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:visibility="gone"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true" />
-        </RelativeLayout>
+
 
     </LinearLayout>
 </ScrollView>

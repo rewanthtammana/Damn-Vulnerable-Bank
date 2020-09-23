@@ -3,17 +3,28 @@ package com.app.damnvulnerablebank;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class signup extends AppCompatActivity {
     FirebaseAuth auth;
@@ -23,42 +34,47 @@ public class signup extends AppCompatActivity {
         startActivity(intent);
     }
     public void signed(View view)
-    {auth = FirebaseAuth.getInstance();
+    {
         EditText inputEmail=findViewById(R.id.signupemail_editText);
         EditText inputPaassword=findViewById(R.id.signup_password_editText);
 
         String email =inputEmail.getText().toString().trim();
         String password =inputPaassword.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(getApplicationContext(), "ENTER EMAIL", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
+        final String url  = sharedPreferences.getString("apiurl",null);
+        String endpoint="/api/user/register";
+        String finalurl = url+endpoint;
 
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(getApplicationContext(), "ENTER PASSWORD", Toast.LENGTH_SHORT).show();
-            return;
+        final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject object = new JSONObject();
+        try {
+            //input your API parameters
+            object.put("username",email);
+            object.put("password",password);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        // Enter the correct url for your api service site
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getApplicationContext(), "User created"+response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(signup.this, login.class));
 
-        if(password.length()<6){
-            Toast.makeText(getApplicationContext(), "Enter valid length", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    }
+                }, new Response.ErrorListener() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(signup.this, "User Created Successfully:" + task.isSuccessful(), Toast.LENGTH_LONG).show();
-                if (!task.isSuccessful()) {
-                    Toast.makeText(signup.this, "Authentication failed." + task.getException(),
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    startActivity(new Intent(signup.this, banklogin.class));
-                    finish();
-                }
-
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "you did something wrong", Toast.LENGTH_SHORT).show();
             }
         });
+        requestQueue.add(jsonObjectRequest);
+
+
+
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -25,7 +25,7 @@ public class passcode extends AppCompatActivity {
 
             @Override
             public void onSuccess(String number) {
-                Intent intent =new Intent(getApplicationContext(),banksecrets.class);
+                Intent intent =new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
             }
         });
