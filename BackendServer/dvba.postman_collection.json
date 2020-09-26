@@ -208,6 +208,48 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "User profile",
+			"request": {
+				"url": "http://{{URL}}/api/user/profile",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{USER_JWT}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Change password",
+			"request": {
+				"url": "http://{{URL}}/api/user/change-password",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{USER_JWT}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"old-password\",\n\t\"new_password\": \"new-password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

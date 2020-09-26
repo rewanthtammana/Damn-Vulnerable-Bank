@@ -1,12 +1,14 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
-const login = require("./login");
-const register = require("./register");
-const user = require("./user");
+var login = require("./login");
+var register = require("./register");
+var profile = require("./profile");
+var changePassword = require("./changePassword");
 
 router.use('/login', login);
 router.use('/register', register);
-// router.use('/', user);
+router.use('/profile', profile);
+router.use("/change-password", changePassword);
 
 module.exports = router;

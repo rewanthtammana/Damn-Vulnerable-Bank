@@ -6,20 +6,19 @@ var statusCodes = require('../../statusCodes');
 var { validateUserToken } = require("../../../middlewares/validateToken");
 
 /**
- * Balance view route
- * @path                 - /api/balance/view
+ * User profile route
+ * This endpoint allows the user to see profile
+ * @path                             - /api/user/profile
  * @middleware
- * @return               - Status: balance and account number
+ * @return                           - Status: Balance, Account number, username, is_admin
  */
 router.post('/', validateUserToken, (req, res) => {
     var r = new Response();
-    // let account_number = req.params.id;
-    // console.log("Balance/view page = ", req.account_number);
     Model.users.findOne({
         where: {
             account_number: req.account_number
         },
-        attributes: ["balance", "account_number"]
+        attributes: ["balance", "account_number", "username", "is_admin"]
     }).then((user) => {
         if(user) {
             r.status = statusCodes.SUCCESS;

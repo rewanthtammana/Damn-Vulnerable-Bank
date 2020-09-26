@@ -7,6 +7,7 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - [ ] Sign up
 - [ ] Login
 - [ ] My profile interface
+- [ ] Change password
 - [ ] Settings interface to update backend URL
 - [ ] Add fingerprint check before transferring/viewing funds
 - [ ] Add pin check before transferring/viewing funds
@@ -46,3 +47,13 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - [ ] Introduce bug in jwt verficiation
 - [ ] Find a way to store database and mount it while using docker
 - [X] Dockerize environment
+
+## Authors
+
+Thanks to these amazing people
+
+|   |   |   |
+|---|---|---|
+| Rewanth Cool  | [Github](https://github.com/rewanth1997/)  | [LinkedIn](https://www.linkedin.com/in/rewanthcool/)  |
+| Hrushikesh Kakade  | [Github](https://github.com/HrushikeshK/)  | [LinkedIn](https://www.linkedin.com/in/hrushikeshkakade/)  |
+| Akshansh Jaiswal  | [Github](https://github.com/jaiswalakshansh)  | [LinkedIn](https://www.linkedin.com/in/akshanshjaiswal/)  |
