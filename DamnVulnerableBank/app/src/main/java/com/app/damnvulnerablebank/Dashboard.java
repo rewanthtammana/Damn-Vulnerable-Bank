@@ -41,6 +41,14 @@ public class Dashboard extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),mybenifview.class));
     }
 
+    public void reset(View v){
+        startActivity(new Intent(getApplicationContext(),passreset.class));
+    }
+
+    public void curc(View v){
+        startActivity(new Intent(getApplicationContext(),currencyrates.class));
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

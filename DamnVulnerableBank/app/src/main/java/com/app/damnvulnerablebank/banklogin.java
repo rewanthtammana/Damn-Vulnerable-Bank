@@ -19,8 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.app.damnvulnerablebank.RootChecker;
 
 public class banklogin extends AppCompatActivity {
 
@@ -30,6 +29,19 @@ public class banklogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_banklogin);
+
+        boolean isRooted = RootChecker.isRooted(this);
+
+        if(isRooted) {
+            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        if(android.os.Debug.isDebuggerConnected()){
+            Toast.makeText(getApplicationContext(), "Debugger Running", Toast.LENGTH_SHORT).show();
+        }
+
+
         SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
         if(sharedPreferences.getBoolean("isloggedin", true))
         {

@@ -49,13 +49,14 @@
         android:textStyle="bold"
         android:textSize="18sp"/>
     <Button
+        android:id="@+id/sendbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circle"
         android:textColor="@color/white"
         android:layout_below="@+id/edamt"
         android:layout_marginTop="12dp"
-        android:onClick="sendmon"
+        android:onClick="Biometrics"
         android:layout_marginLeft="155dp"
         android:text="Send Money"/>
 </RelativeLayout>

@@ -3,6 +3,7 @@
     package="com.app.damnvulnerablebank">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".mybenifview"></activity>
+        <activity android:name=".currencyrates">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="xe.com"
+                    android:scheme="http" />
+                <data
+                    android:host="xe.com"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".passreset" />
+        <activity android:name=".mybenifview" />
         <activity android:name=".approvebenificiary" />
         <activity android:name=".pendingbenificiary" />
         <activity android:name=".addbenif" />
@@ -25,7 +42,6 @@
         <activity android:name=".viewbenif" />
         <activity android:name=".transactions" />
         <activity android:name=".balanceview" />
-        <activity android:name=".passcode" />
         <activity android:name=".Dashboard" />
         <activity android:name=".signup" />
         <activity android:name=".login" />
