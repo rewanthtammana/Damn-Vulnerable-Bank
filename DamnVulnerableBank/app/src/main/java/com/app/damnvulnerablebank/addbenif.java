@@ -31,6 +31,7 @@ public class addbenif extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbenif);
 
+
     }
 
     public void addbenf(View view){
