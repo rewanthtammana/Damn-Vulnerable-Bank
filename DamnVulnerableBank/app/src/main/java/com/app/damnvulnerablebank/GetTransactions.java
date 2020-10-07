@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -15,8 +14,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -29,10 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class transactions extends AppCompatActivity {
+public class GetTransactions extends AppCompatActivity {
 
         RecyclerView recyclerView;
-        List<Trecords> trecords;
+        List<TransactionRecords> trecords;
 
         Adapter adapter;
 
@@ -44,10 +41,10 @@ public class transactions extends AppCompatActivity {
         recyclerView=findViewById(R.id.transt);
         trecords=new ArrayList<>();
 
-        extractrecords();
+        extractRecords();
     }
 
-    private void extractrecords() {
+    private void extractRecords() {
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url  = sharedPreferences.getString("apiurl",null);
         String endpoint="/api/transactions/view";
@@ -64,7 +61,7 @@ public class transactions extends AppCompatActivity {
 
 
                             JSONObject transrecobject = jsonArray.getJSONObject(i);
-                            Trecords trecorder = new Trecords();
+                            TransactionRecords trecorder = new TransactionRecords();
                             trecorder.setFromaccnt(transrecobject.getString("from_account").toString());
                             trecorder.setToaccnt(transrecobject.getString("to_account").toString());
                             trecorder.setAmount(transrecobject.getString("amount").toString());

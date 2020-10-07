@@ -14,9 +14,9 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     LayoutInflater inflater;
-    List<Trecords> trecords;
+    List<TransactionRecords> trecords;
 
-    public Adapter(Context ctx,List<Trecords> trecords){
+    public Adapter(Context ctx,List<TransactionRecords> trecords){
         this.inflater=LayoutInflater.from(ctx);
         this.trecords=trecords;
     }

@@ -27,28 +27,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class pendingbenificiary extends AppCompatActivity implements Padapter.OnItemClickListener{
-    public static final String id="id";
+public class ViewBeneficiaryAdmin extends AppCompatActivity  implements Badapter.OnItemClickListener {
+public static final String beneficiary_account_number="beneficiary_account_number";
     RecyclerView recyclerView;
-    List<Precords> precords;
+    List<BeneficiaryRecords> brecords;
 
-    Padapter padapter;
+
+    Badapter badapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pendingbenificiary);
-        recyclerView=findViewById(R.id.pendb);
-        precords=new ArrayList<>();
-
-        pendingbenif();
+        setContentView(R.layout.activity_viewbenif);
+        recyclerView=findViewById(R.id.benif);
+        brecords=new ArrayList<>();
+        viewBeneficiaries();
     }
-
-    public void pendingbenif(){
+    public void viewBeneficiaries(){
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
-        final String url  = sharedPreferences.getString("apiurl",null);
-        String endpoint="/api/beneficiary/pending";
-        String finalurl = url+endpoint;
+        final String url = sharedPreferences.getString("apiurl",null);
+        String endpoint = "/api/beneficiary/view";
+        final String finalurl = url+endpoint;
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalurl, null,
                 new Response.Listener<JSONObject>() {
@@ -58,14 +57,11 @@ public class pendingbenificiary extends AppCompatActivity implements Padapter.On
                         try {
                             JSONArray jsonArray=response.getJSONArray("data");
                             for(int i=0;i<jsonArray.length();i++) {
-
-
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
-                                Precords precorder = new Precords();
-                                precorder.setAccount_number(transrecobject.getString("account_number").toString());
-                                precorder.setBeneficiary_account_number(transrecobject.getString("beneficiary_account_number").toString());
-                                precorder.setIdd(transrecobject.getString("id").toString());
-                                precords.add(precorder);
+                                BeneficiaryRecords brecorder = new BeneficiaryRecords();
+                                brecorder.setBeneficiaryAccount(transrecobject.getString("beneficiary_account_number").toString());
+                                //brecorder.setIsapproved(transrecobject.getString("approved").toString());
+                                brecords.add(brecorder);
                             }
 
                         } catch (JSONException e) {
@@ -73,9 +69,9 @@ public class pendingbenificiary extends AppCompatActivity implements Padapter.On
                         }
 
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        padapter=new Padapter(getApplicationContext(),precords);
-                        recyclerView.setAdapter(padapter);
-                        padapter.setOnItemClickListener(pendingbenificiary.this);
+                        badapter=new Badapter(getApplicationContext(),brecords);
+                        recyclerView.setAdapter(badapter);
+                        badapter.setOnItemClickListener(ViewBeneficiaryAdmin.this);
 
                     }
 
@@ -100,9 +96,10 @@ public class pendingbenificiary extends AppCompatActivity implements Padapter.On
 
     @Override
     public void onItemClick(int position) {
-        Intent de=new Intent(this,approvebenificiary.class);
-        Precords cf =precords.get(position);
-        de.putExtra(id,cf.getIdd());
+        Intent de=new Intent(this, SendMoney.class);
+        BeneficiaryRecords cf =brecords.get(position);
+
+        de.putExtra(beneficiary_account_number,cf.getBeneficiaryAccount());
         startActivity(de);
     }
 }

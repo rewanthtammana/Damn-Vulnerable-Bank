@@ -2,14 +2,14 @@ package com.app.damnvulnerablebank;
 
 import android.widget.ImageView;
 
-public class Trecords {
+public class TransactionRecords {
     private String fromaccnt;
     private  String toaccnt;
     private  String amount;
 
 
-    public Trecords(){}
-    public Trecords(String fromacc, String toacc, String amount){
+    public TransactionRecords(){}
+    public TransactionRecords(String fromacc, String toacc, String amount){
         this.fromaccnt=fromacc;
         this.toaccnt=toacc;
         this.amount=amount;

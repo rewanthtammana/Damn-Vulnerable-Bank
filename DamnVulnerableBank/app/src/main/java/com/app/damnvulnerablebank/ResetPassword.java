@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class passreset extends AppCompatActivity {
+public class ResetPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +32,15 @@ public class passreset extends AppCompatActivity {
         setContentView(R.layout.activity_passreset);
     }
 
-    public void reset(View view) {
-        EditText oldpass = findViewById(R.id.oldlogin_password_editText);
-        EditText newpass = findViewById(R.id.newlogin_password_editText);
-        EditText newpass1 = findViewById(R.id.new1login_password_editText);
-        final String oldpassword = oldpass.getText().toString().trim();
-        final String newpassword = newpass.getText().toString().trim();
-        final String new1password = newpass1.getText().toString().trim();
+    public void resetPassword(View view) {
+        EditText oldPass = findViewById(R.id.oldlogin_password_editText);
+        EditText newPass = findViewById(R.id.newlogin_password_editText);
+        EditText newPassConfirm = findViewById(R.id.new1login_password_editText);
+        final String oldPassword = oldPass.getText().toString().trim();
+        final String newPassword = newPass.getText().toString().trim();
+        final String newpasswordConfirm = newPassConfirm.getText().toString().trim();
 
-        if (!newpassword.equals(new1password)) {
+        if (!newPassword.equals(newpasswordConfirm)) {
             Toast.makeText(getApplicationContext(), "Something Entered Password is Different", Toast.LENGTH_SHORT).show();
         }
 
@@ -55,8 +55,8 @@ public class passreset extends AppCompatActivity {
         JSONObject object = new JSONObject();
         try {
             //input your API parameters
-            object.put("password", oldpassword);
-            object.put("new_password", newpassword);
+            object.put("password", oldPassword);
+            object.put("new_password", newPassword);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class passreset extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Done", Toast.LENGTH_SHORT).show();
                         SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
                         sharedPreferences.edit().putBoolean("isloggedin", false).apply();
-                        startActivity(new Intent(passreset.this, login.class));
+                        startActivity(new Intent(ResetPassword.this, BankLogin.class));
 
 
                     }
@@ -84,7 +84,7 @@ public class passreset extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
                 final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
                 HashMap headers=new HashMap();
-                headers.put("Authorization","Bearer "+retrivedToken);
+                headers.put("Authorization","Bearer " + retrivedToken);
                 return headers;
             }};
 

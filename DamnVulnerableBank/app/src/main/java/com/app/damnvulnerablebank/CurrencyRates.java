@@ -9,8 +9,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class currencyrates extends AppCompatActivity {
-    String gettoken;
+public class CurrencyRates extends AppCompatActivity {
+    String getToken;
 
 
     @Override
@@ -27,14 +27,15 @@ public class currencyrates extends AppCompatActivity {
             vulnerable.setWebViewClient(webViewClient);
             vulnerable.loadUrl("https://www.xe.com/"); }
 
-        else{gettoken=getIntent().getData().getQueryParameter("url");
+        else{
+            getToken =getIntent().getData().getQueryParameter("url");
             WebView vulnerable =(WebView) findViewById(R.id.loads);
             WebSettings webSettings = vulnerable.getSettings();
             webSettings.setJavaScriptEnabled(true);
             vulnerable.setWebChromeClient(new WebChromeClient());
             WebViewClientImpl webViewClient = new WebViewClientImpl(this);
             vulnerable.setWebViewClient(webViewClient);
-            vulnerable.loadUrl(gettoken);}
+            vulnerable.loadUrl(getToken);}
     }
 }
 

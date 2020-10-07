@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -19,9 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.app.damnvulnerablebank.RootUtil;
 
-public class banklogin extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
@@ -32,10 +30,10 @@ public class banklogin extends AppCompatActivity {
 
 
 
-        if(RootUtil.isDeviceRooted()) {
-            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
-            finish();
-        }
+//        if(RootUtil.isDeviceRooted()) {
+//            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
+//            finish();
+//        }
 
 
 
@@ -46,7 +44,7 @@ public class banklogin extends AppCompatActivity {
         }
     }
 
-    public void addapi(View view){
+    public void addApi(View view){
         SharedPreferences pref = getApplicationContext().getSharedPreferences("apiurl", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         EditText ed=findViewById(R.id.apiurl);
@@ -55,15 +53,17 @@ public class banklogin extends AppCompatActivity {
         editor.apply();
     }
 
-    public void loginpage(View view){
-        Intent intent =new Intent(getApplicationContext(),login.class);
+    public void loginPage(View view){
+        Intent intent =new Intent(getApplicationContext(), BankLogin.class);
         startActivity(intent);
     }
-    public void signupage(View view){
-        Intent intent =new Intent(getApplicationContext(),signup.class);
+
+    public void signupPage(View view){
+        Intent intent =new Intent(getApplicationContext(), RegisterBank.class);
         startActivity(intent);
     }
-    public void healthcheck(View v){
+
+    public void healthCheck(View v){
         final View vButton = findViewById(R.id.healthc);
         final Button bButton = (Button) findViewById(R.id.healthc);
         RequestQueue queue = Volley.newRequestQueue(this);

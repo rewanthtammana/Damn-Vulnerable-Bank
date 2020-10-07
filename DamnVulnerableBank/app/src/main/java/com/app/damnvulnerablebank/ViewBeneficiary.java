@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -27,10 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class mybenifview extends AppCompatActivity  implements Badapter.OnItemClickListener {
+public class ViewBeneficiary extends AppCompatActivity  implements Badapter.OnItemClickListener {
     public static final String beneficiary_account_number="beneficiary_account_number";
     RecyclerView recyclerView;
-    List<Brecords> brecords;
+    List<BeneficiaryRecords> brecords;
 
 
     Badapter badapter;
@@ -41,26 +40,26 @@ public class mybenifview extends AppCompatActivity  implements Badapter.OnItemCl
         setContentView(R.layout.activity_viewbenif);
         recyclerView=findViewById(R.id.benif);
         brecords=new ArrayList<>();
-        viewbenificiaries();
+        viewBeneficiaries();
     }
-    public void viewbenificiaries(){
+    public void viewBeneficiaries(){
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
-        final String url  = sharedPreferences.getString("apiurl",null);
-        String endpoint="/api/beneficiary/view";
-        final String finalurl = url+endpoint;
+        final String url = sharedPreferences.getString("apiurl",null);
+        String endpoint = "/api/beneficiary/view";
+        final String finalUrl = url+endpoint;
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalurl, null,
+        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 
                         try {
                             JSONArray jsonArray=response.getJSONArray("data");
-                            for(int i=0;i<jsonArray.length();i++) {
+                            for(int i=0; i < jsonArray.length(); i++) {
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
-                                Brecords brecorder = new Brecords();
-                                brecorder.setBenificiaryaccnt(transrecobject.getString("beneficiary_account_number").toString());
-                                brecorder.setIsapproved(transrecobject.getString("approved").toString());
+                                BeneficiaryRecords brecorder = new BeneficiaryRecords();
+                                brecorder.setBeneficiaryAccount(transrecobject.getString("beneficiary_account_number").toString());
+                                brecorder.setIsApproved(transrecobject.getString("approved").toString());
                                 brecords.add(brecorder);
                             }
 
@@ -71,7 +70,7 @@ public class mybenifview extends AppCompatActivity  implements Badapter.OnItemCl
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         badapter=new Badapter(getApplicationContext(),brecords);
                         recyclerView.setAdapter(badapter);
-                        badapter.setOnItemClickListener(mybenifview.this);
+                        badapter.setOnItemClickListener(ViewBeneficiary.this);
 
                     }
 
@@ -84,8 +83,8 @@ public class mybenifview extends AppCompatActivity  implements Badapter.OnItemCl
             @Override
             public Map getHeaders() throws AuthFailureError {
                 SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
-                final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
-                HashMap headers=new HashMap();
+                final String retrivedToken = sharedPreferences.getString("accesstoken",null);
+                HashMap headers = new HashMap();
                 headers.put("Authorization","Bearer "+retrivedToken);
                 return headers;
             }};

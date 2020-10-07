@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:padding="30dp"
     android:background="@color/kuchbhiblue"
-    tools:context=".banklogin">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:background="@drawable/circle"
-                android:onClick="loginpage"
+                android:onClick="loginPage"
                 android:text="Login" />
 
             <Button
@@ -61,7 +61,7 @@
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:background="@drawable/circle"
-                android:onClick="signupage"
+                android:onClick="signupPage"
                 android:text="Signup" />
 
 
@@ -77,7 +77,7 @@
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:background="@drawable/circle"
-            android:onClick="healthcheck"
+            android:onClick="healthCheck"
             android:text="Health Check"
             android:textColor="@color/white" />
 
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:background="@drawable/circle"
-            android:onClick="addapi"
+            android:onClick="addApi"
             android:text="Add API"
             android:textColor="@color/white" />
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Padapter extends RecyclerView.Adapter<Padapter.ViewHolder>{
     LayoutInflater inflater;
-    List<Precords> precords;
+    List<PendingBeneficiaryRecords> precords;
     private Padapter.OnItemClickListener mListener;
 
     public interface OnItemClickListener{
@@ -24,7 +24,7 @@ public class Padapter extends RecyclerView.Adapter<Padapter.ViewHolder>{
         mListener =listener;
     }
 
-    public Padapter(Context ctx,List<Precords> precords){
+    public Padapter(Context ctx,List<PendingBeneficiaryRecords> precords){
         this.inflater=LayoutInflater.from(ctx);
         this.precords=precords;
     }
@@ -38,9 +38,9 @@ public class Padapter extends RecyclerView.Adapter<Padapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull Padapter.ViewHolder holder, int position) {
-        holder.account_number.setText(precords.get(position).getAccount_number());
-        holder.beneficiary_account_number.setText(precords.get(position).getBeneficiary_account_number());
-        holder.idd.setText(precords.get(position).getIdd());
+        holder.account_number.setText(precords.get(position).getAccountNumber());
+        holder.beneficiary_account_number.setText(precords.get(position).getBeneficiaryAccountNumber());
+        holder.idd.setText(precords.get(position).getId());
 
     }
 

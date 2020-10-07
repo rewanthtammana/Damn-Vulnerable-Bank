@@ -25,9 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.app.damnvulnerablebank.viewbenif.beneficiary_account_number;
-
-public class approvebenificiary extends AppCompatActivity {
+public class ApproveBeneficiary extends AppCompatActivity {
     TextView hey;
 
     @Override
@@ -40,7 +38,7 @@ public class approvebenificiary extends AppCompatActivity {
         hey.setText(we);
     }
 
- public void approvebenf(View view){
+ public void approveBeneficiary(View view){
      SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
      final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
      EditText ed=findViewById(R.id.accountid1);
@@ -69,7 +67,7 @@ public class approvebenificiary extends AppCompatActivity {
                      Toast.makeText(getApplicationContext(),""+response, Toast.LENGTH_SHORT).show();
 
 
-                     startActivity(new Intent(approvebenificiary.this, Dashboard.class));
+                     startActivity(new Intent(ApproveBeneficiary.this, Dashboard.class));
 
                  }
              }, new Response.ErrorListener() {

@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="addben"
+            android:onClick="addBeneficiary"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -99,7 +99,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="mybenifs"
+            android:onClick="viewMyBeneficiaries"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -135,7 +135,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="viewben"
+            android:onClick="viewBeneficiaryAdmin"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -171,7 +171,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="balnc"
+            android:onClick="viewBalance"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -207,7 +207,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="transactions"
+            android:onClick="viewTransactions"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -243,7 +243,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="benfs"
+            android:onClick="getPendingBeneficiaries"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -279,7 +279,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="curc"
+            android:onClick="getCurrencyRates"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
@@ -315,7 +315,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="reset"
+            android:onClick="resetPassword"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"

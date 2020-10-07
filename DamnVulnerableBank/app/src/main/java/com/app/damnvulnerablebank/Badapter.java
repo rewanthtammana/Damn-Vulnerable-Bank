@@ -1,9 +1,6 @@
 package com.app.damnvulnerablebank;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +14,7 @@ import java.util.List;
 public class Badapter extends RecyclerView.Adapter<Badapter.ViewHolder> {
 
     LayoutInflater inflater;
-    List<Brecords> brecords;
+    List<BeneficiaryRecords> brecords;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener{
@@ -28,7 +25,7 @@ public class Badapter extends RecyclerView.Adapter<Badapter.ViewHolder> {
         mListener =listener;
     }
 
-    public Badapter(Context ctx,List<Brecords> brecords){
+    public Badapter(Context ctx,List<BeneficiaryRecords> brecords){
         this.inflater=LayoutInflater.from(ctx);
         this.brecords=brecords;
     }
@@ -42,8 +39,8 @@ public class Badapter extends RecyclerView.Adapter<Badapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.benificiaryaccnt.setText(brecords.get(position).getBenificiaryaccnt());
-        holder.isapproved.setText(brecords.get(position).getIsapproved());
+        holder.benificiaryaccnt.setText(brecords.get(position).getBeneficiaryAccount());
+        holder.isapproved.setText(brecords.get(position).getIsApproved());
 
 
     }

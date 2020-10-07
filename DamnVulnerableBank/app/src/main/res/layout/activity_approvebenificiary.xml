@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".approvebenificiary">
+    tools:context=".ApproveBeneficiary">
 
     <ImageView
         android:id="@+id/imageView"
@@ -44,7 +44,7 @@
         android:textColor="@color/white"
         android:layout_below="@+id/accountid1"
         android:layout_marginTop="12dp"
-        android:onClick="approvebenf"
+        android:onClick="approveBeneficiary"
         android:layout_marginLeft="115dp"
         android:text="Approve Benificiary "/>
 

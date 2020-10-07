@@ -27,27 +27,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class viewbenif extends AppCompatActivity  implements Badapter.OnItemClickListener {
-public static final String beneficiary_account_number="beneficiary_account_number";
+public class PendingBeneficiary extends AppCompatActivity implements Padapter.OnItemClickListener{
+    public static final String id="id";
     RecyclerView recyclerView;
-    List<Brecords> brecords;
+    List<PendingBeneficiaryRecords> precords;
 
-
-    Badapter badapter;
+    Padapter padapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewbenif);
-        recyclerView=findViewById(R.id.benif);
-        brecords=new ArrayList<>();
-        viewbenificiaries();
+        setContentView(R.layout.activity_pendingbenificiary);
+        recyclerView=findViewById(R.id.pendb);
+        precords=new ArrayList<>();
+
+        getPendingBeneficiaries();
     }
-    public void viewbenificiaries(){
+
+    public void getPendingBeneficiaries(){
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url  = sharedPreferences.getString("apiurl",null);
-        String endpoint="/api/beneficiary/view";
-        final String finalurl = url+endpoint;
+        String endpoint = "/api/beneficiary/pending";
+        String finalurl = url + endpoint;
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalurl, null,
                 new Response.Listener<JSONObject>() {
@@ -57,11 +58,14 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                         try {
                             JSONArray jsonArray=response.getJSONArray("data");
                             for(int i=0;i<jsonArray.length();i++) {
+
+
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
-                                Brecords brecorder = new Brecords();
-                                brecorder.setBenificiaryaccnt(transrecobject.getString("beneficiary_account_number").toString());
-                                //brecorder.setIsapproved(transrecobject.getString("approved").toString());
-                                brecords.add(brecorder);
+                                PendingBeneficiaryRecords precorder = new PendingBeneficiaryRecords();
+                                precorder.setAccountNumber(transrecobject.getString("account_number").toString());
+                                precorder.setBeneficiaryAccountNumber(transrecobject.getString("beneficiary_account_number").toString());
+                                precorder.setId(transrecobject.getString("id").toString());
+                                precords.add(precorder);
                             }
 
                         } catch (JSONException e) {
@@ -69,9 +73,9 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                         }
 
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        badapter=new Badapter(getApplicationContext(),brecords);
-                        recyclerView.setAdapter(badapter);
-                        badapter.setOnItemClickListener(viewbenif.this);
+                        padapter = new Padapter(getApplicationContext(),precords);
+                        recyclerView.setAdapter(padapter);
+                        padapter.setOnItemClickListener(PendingBeneficiary.this);
 
                     }
 
@@ -84,9 +88,9 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
             @Override
             public Map getHeaders() throws AuthFailureError {
                 SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
-                final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
-                HashMap headers=new HashMap();
-                headers.put("Authorization","Bearer "+retrivedToken);
+                final String retrivedToken = sharedPreferences.getString("accesstoken",null);
+                HashMap headers = new HashMap();
+                headers.put("Authorization","Bearer " + retrivedToken);
                 return headers;
             }};
 
@@ -96,10 +100,9 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
 
     @Override
     public void onItemClick(int position) {
-        Intent de=new Intent(this,sendmoney.class);
-        Brecords cf =brecords.get(position);
-
-        de.putExtra(beneficiary_account_number,cf.getBenificiaryaccnt());
+        Intent de=new Intent(this, ApproveBeneficiary.class);
+        PendingBeneficiaryRecords cf =precords.get(position);
+        de.putExtra(id,cf.getId());
         startActivity(de);
     }
 }

@@ -2,15 +2,12 @@ package com.app.damnvulnerablebank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -19,35 +16,31 @@ public class Dashboard extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("isloggedin", false);
         editor.apply();
-        startActivity(new Intent(getApplicationContext(), banklogin.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
-
-    public void addben(View v){
-        startActivity(new Intent(getApplicationContext(),addbenif.class));
+    public void addBeneficiary(View v){
+        startActivity(new Intent(getApplicationContext(), AddBeneficiary.class));
     }
-
-     public void balnc(View V){
-        startActivity(new Intent(getApplicationContext(),balanceview.class));
-}
-    public void transactions(View V){
-        startActivity(new Intent(getApplicationContext(),transactions.class));
+    public void viewBalance(View V){
+        startActivity(new Intent(getApplicationContext(), ViewBalance.class));
     }
-    public void viewben(View V){
-        startActivity(new Intent(getApplicationContext(),viewbenif.class));
+    public void viewTransactions(View V){
+        startActivity(new Intent(getApplicationContext(), GetTransactions.class));
     }
-    public void benfs(View V){
-        startActivity(new Intent(getApplicationContext(),pendingbenificiary.class));
+    public void viewBeneficiaryAdmin(View V){
+        startActivity(new Intent(getApplicationContext(), ViewBeneficiaryAdmin.class));
     }
-    public void mybenifs(View V){
-        startActivity(new Intent(getApplicationContext(),mybenifview.class));
+    public void getPendingBeneficiaries(View V){
+        startActivity(new Intent(getApplicationContext(), PendingBeneficiary.class));
     }
-
-    public void reset(View v){
-        startActivity(new Intent(getApplicationContext(),passreset.class));
+    public void viewMyBeneficiaries(View V){
+        startActivity(new Intent(getApplicationContext(), ViewBeneficiary.class));
     }
-
-    public void curc(View v){
-        startActivity(new Intent(getApplicationContext(),currencyrates.class));
+    public void resetPassword(View v){
+        startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+    }
+    public void getCurrencyRates(View v){
+        startActivity(new Intent(getApplicationContext(), CurrencyRates.class));
     }
 
 
@@ -56,10 +49,10 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         TextView t1=findViewById(R.id.dasht);
-        if(RootUtil.isDeviceRooted()) {
-            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
-            finish();
-        }
+//        if(RootUtil.isDeviceRooted()) {
+//            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
+//            finish();
+//        }
 
 
     }
