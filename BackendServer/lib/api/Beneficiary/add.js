@@ -38,7 +38,13 @@ router.post("/", validateUserToken, (req, res) => {
         attributes: ["beneficiary_account_number"]
     }).then((data) => {
         let arr = data.map((elem) => elem.beneficiary_account_number);
-        if (arr.includes(parseInt(beneficiary_account_number))) {
+        if (isNaN(parseInt(beneficiary_account_number))) {
+            r.status = statusCodes.BAD_INPUT;
+            r.data = {
+                "message": "Enter valid account number"
+            };
+            return res.json(r);
+        } else if (arr.includes(parseInt(beneficiary_account_number))) {
             r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Account already exists in beneficiary list"
