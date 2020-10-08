@@ -6,7 +6,7 @@ This application starts an API server that serve incoming requests from the andr
 
 ### With docker
 - `cd BackendServer`
-- `docker-compose up`
+- `docker-compose up --build`
 - `curl <IP>:<magic_port>/api/health/check`
 
 ### Without docker
