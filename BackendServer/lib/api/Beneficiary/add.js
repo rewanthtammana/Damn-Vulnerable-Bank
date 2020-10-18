@@ -21,7 +21,13 @@ router.post("/", validateUserToken, (req, res) => {
         r.status = statusCodes.BAD_INPUT;
         r.data = {
             "message": "Cannot add self account to beneficiary"
-        }
+        };
+        return res.json(r);
+    } else if (beneficiary_account_number == "") {
+        r.status = statusCodes.BAD_INPUT;
+        r.data = {
+            "message": "Beneficiary account number cannot be empty"
+        };
         return res.json(r);
     }
     
@@ -31,13 +37,19 @@ router.post("/", validateUserToken, (req, res) => {
         },
         attributes: ["beneficiary_account_number"]
     }).then((data) => {
-        let arr = data.map((elem) => {return elem.beneficiary_account_number});
-        if (arr.includes(beneficiary_account_number)) {
+        let arr = data.map((elem) => elem.beneficiary_account_number);
+        if (isNaN(parseInt(beneficiary_account_number))) {
+            r.status = statusCodes.BAD_INPUT;
+            r.data = {
+                "message": "Enter valid account number"
+            };
+            return res.json(r);
+        } else if (arr.includes(parseInt(beneficiary_account_number))) {
             r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Account already exists in beneficiary list"
             };
-            res.json(r);
+            return res.json(r);
         } else {
             Model.beneficiaries.create({
                 account_number: account_number,
@@ -48,14 +60,14 @@ router.post("/", validateUserToken, (req, res) => {
             }).catch((err) => {
                 r.status = statusCodes.SERVER_ERROR;
                 r.data = err;
-                res.json(r);
+                return res.json(r);
             });
         }
 
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = err;
-        res.json(r);
+        return res.json(r);
     });
 });
 
