@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -72,6 +73,7 @@ public class BankLogin extends AppCompatActivity {
                             JSONObject obj = response.getJSONObject("data");
                             String accessToken=obj.getString("accessToken");
                             SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
+                            Log.d("accesstoken",accessToken);
                             sharedPreferences.edit().putString("accesstoken",accessToken).apply();
                             sharedPreferences.edit().putBoolean("isloggedin",true).apply();
                             startActivity(new Intent(BankLogin.this, Dashboard.class));

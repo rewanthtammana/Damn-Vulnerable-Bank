@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
+
         <item name="colorPrimary">@android:color/background_dark</item>
         <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
     </style>

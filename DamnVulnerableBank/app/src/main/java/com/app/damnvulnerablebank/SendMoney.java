@@ -117,12 +117,12 @@ public class SendMoney extends AppCompatActivity {
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
                 Toast.makeText(this,"No fingerprint sensor",Toast.LENGTH_LONG).show();
                 send.setVisibility(View.INVISIBLE);
-                sendMoney();
+
                 break;
             case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
                 Toast.makeText(this,"Biometric sensor is not available",Toast.LENGTH_LONG).show();
                 send.setVisibility(View.INVISIBLE);
-                sendMoney();
+
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
                 Toast.makeText(this,"Your device don't have any fingerprint, check your security setting",Toast.LENGTH_LONG).show();
@@ -156,7 +156,7 @@ public class SendMoney extends AppCompatActivity {
         final BiometricPrompt.PromptInfo  promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Login")
                 .setDescription("User fingerprint to Proceed")
-                .setNegativeButtonText("cancel")
+                .setDeviceCredentialAllowed(true)
                 .build();
 
 
