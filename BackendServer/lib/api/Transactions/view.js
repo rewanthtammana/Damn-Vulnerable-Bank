@@ -5,6 +5,7 @@ var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateUserToken } = require("../../../middlewares/validateToken");
 const { Op } = require("sequelize");
+var { encryptResponse } = require("../../../middlewares/crypt");
 
 /**
  * Transactions viewing route
@@ -27,13 +28,13 @@ router.post('/', validateUserToken, (req, res) => {
     }).then((transactions) => {
         r.status = statusCodes.SUCCESS;
         r.data = transactions;
-        return res.json(r);
+        return res.send(encryptResponse(r));
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        return res.json(r);
+        return res.send(encryptResponse(r));
     });
 });
 

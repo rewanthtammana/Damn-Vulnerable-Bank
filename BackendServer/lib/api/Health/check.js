@@ -3,6 +3,7 @@ var router = express.Router();
 var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
+var { encryptResponse } = require("../../../middlewares/crypt");
 
 /**
  * Health checks route
@@ -14,13 +15,13 @@ router.get('/', function(req, res) {
   var r = new Response();
   Model.users.findAll().then(function(data) {
     r.status = statusCodes.SUCCESS;
-    return res.json(r);
+    return res.send(encryptResponse(r));
   }).catch((err) => {
     r.status = statusCodes.SERVER_ERROR;
     r.data = {
       "message": err.toString()
   };
-    return res.json(r);
+    return res.send(encryptResponse(r));
   });
 });
 

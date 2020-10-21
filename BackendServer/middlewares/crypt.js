@@ -25,7 +25,7 @@ const decrypt = (encodedInput) => {
  * @return                           - Calls the next function on success
  */
 const encryptResponse = (input) => {  
-  let enc = operate(input);
+  let enc = operate(input.toString());
   let b64 = Buffer.from(enc).toString('base64');
   return b64;
 }
@@ -48,6 +48,6 @@ const decryptRequest = function(req, res, next) {
 };
 
 module.exports =  {
-    // encryptResponse,
+    encryptResponse,
     decryptRequest
 }

@@ -3,7 +3,7 @@ var router = express.Router();
 var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
-var { decryptRequest } = require("../../../middlewares/crypt");
+var { encryptResponse, decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Registration route
@@ -41,13 +41,13 @@ router.post('/', decryptRequest, (req, res) => {
                     account_number: account_number
                 }).then(() => {
                     r.status = statusCodes.SUCCESS;
-                    res.json(r);
+                    res.send(encryptResponse(r));
                 }).catch((err) => {
                     r.status = statusCodes.SERVER_ERROR;
                     r.data = {
                         "message": err.toString()
                     };
-                    res.json(r);
+                    res.send(encryptResponse(r));
                 });
             });
         } else {
@@ -55,14 +55,14 @@ router.post('/', decryptRequest, (req, res) => {
             r.data = {
                 "message": "Username already taken"
             };
-            return res.json(r);
+            return res.send(encryptResponse(r));
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        return res.json(r);
+        return res.send(encryptResponse(r));
     });
 });
 

@@ -4,7 +4,7 @@ var Model = require("../../../models/index");
 var Response = require("../../Response");
 var statusCodes = require("../../statusCodes");
 var { validateUserToken } = require("../../../middlewares/validateToken");
-var { decryptRequest } = require("../../../middlewares/crypt");
+var { encryptResponse, decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Beneficiary add route
@@ -23,13 +23,13 @@ router.post("/", [validateUserToken, decryptRequest], (req, res) => {
         r.data = {
             "message": "Cannot add self account to beneficiary"
         };
-        return res.json(r);
+        return res.send(encryptResponse(r));
     } else if (beneficiary_account_number == "") {
         r.status = statusCodes.BAD_INPUT;
         r.data = {
             "message": "Beneficiary account number cannot be empty"
         };
-        return res.json(r);
+        return res.send(encryptResponse(r));
     }
     
     Model.beneficiaries.findAll({
@@ -44,31 +44,31 @@ router.post("/", [validateUserToken, decryptRequest], (req, res) => {
             r.data = {
                 "message": "Enter valid account number"
             };
-            return res.json(r);
+            return res.send(encryptResponse(r));
         } else if (arr.includes(parseInt(beneficiary_account_number))) {
             r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Account already exists in beneficiary list"
             };
-            return res.json(r);
+            return res.send(encryptResponse(r));
         } else {
             Model.beneficiaries.create({
                 account_number: account_number,
                 beneficiary_account_number: beneficiary_account_number
             }).then(() => {
                 r.status = statusCodes.SUCCESS;
-                return res.json(r);
+                return res.send(encryptResponse(r));
             }).catch((err) => {
                 r.status = statusCodes.SERVER_ERROR;
                 r.data = err;
-                return res.json(r);
+                return res.send(encryptResponse(r));
             });
         }
 
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = err;
-        return res.json(r);
+        return res.send(encryptResponse(r));
     });
 });
 

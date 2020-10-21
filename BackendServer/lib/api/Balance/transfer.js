@@ -5,7 +5,7 @@ const Sequelize = require("sequelize");
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateUserToken } = require("../../../middlewares/validateToken");
-var { decryptRequest } = require("../../../middlewares/crypt");
+var { encryptResponse, decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Balance transfer route
@@ -59,7 +59,7 @@ router.post('/', [validateUserToken, decryptRequest], (req, res) => {
                                         }
                                     }).then(() => {
                                         r.status = statusCodes.SUCCESS;
-                                        return res.json(r);
+                                        return res.send(encryptResponse(r));
                                     });
                                 });
                             });        
@@ -68,39 +68,39 @@ router.post('/', [validateUserToken, decryptRequest], (req, res) => {
                             r.data = {
                                 "message": "Receiver account number not in beneficiary list"
                             }
-                            return res.json(r);
+                            return res.send(encryptResponse(r));
                         }
                     } else {
                         r.status = statusCodes.BAD_INPUT;
                         r.data = {
                             "message": "Receiver account number not in beneficiary list"
                         }
-                        return res.json(r);
+                        return res.send(encryptResponse(r));
                     }
                 }).catch((err) => {
                     r.status = statusCodes.SERVER_ERROR;
                     r.data = {
                         "message": err.toString()
                     };
-                    return res.json(r);
+                    return res.send(encryptResponse(r));
                 });
             } else {
                 r.status = statusCodes.BAD_INPUT;
                 r.data = {
                     "message": "Insufficient balance"
                 };
-                return res.json(r);
+                return res.send(encryptResponse(r));
             }
         } else {
             r.status = statusCodes.NOT_AUTHORIZED;
-            return res.json(r);
+            return res.send(encryptResponse(r));
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        res.json(r);
+        res.send(encryptResponse(r));
     });
 });
 

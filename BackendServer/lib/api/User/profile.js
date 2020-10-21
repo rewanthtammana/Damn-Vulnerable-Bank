@@ -4,6 +4,7 @@ var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateUserToken } = require("../../../middlewares/validateToken");
+var { encryptResponse, decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * User profile route
@@ -23,17 +24,17 @@ router.post('/', validateUserToken, (req, res) => {
         if(user) {
             r.status = statusCodes.SUCCESS;
             r.data = user;
-            return res.json(r);
+            return res.send(encryptResponse(r));
         } else {
             r.status = statusCodes.NOT_AUTHORIZED;
-            return res.json(r);
+            return res.send(encryptResponse(r));
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        res.json(r);
+        res.send(encryptResponse(r));
     });
 });
 

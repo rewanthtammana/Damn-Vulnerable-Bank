@@ -4,7 +4,7 @@ var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateAdminToken } = require("../../../middlewares/validateToken");
-var { decryptRequest } = require("../../../middlewares/crypt");
+var { encryptResponse, decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Beneficiary approve route
@@ -39,14 +39,14 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
                         }
                     }).then(() => {
                         r.status = statusCodes.SUCCESS;
-                        return res.json(r);
+                        return res.send(encryptResponse(r));
                     });
                 } else {
                     r.status = statusCodes.BAD_INPUT;
                     r.data = {
                         "message": "Beneficiary with given account number doesn't exist"
                     };
-                    return res.json(r);
+                    return res.send(encryptResponse(r));
                 }
             });
 
@@ -55,7 +55,7 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
             r.data = {
                 "message": "Pending beneficiary with given details not found"
             }
-            return res.json(r);
+            return res.send(encryptResponse(r));
         }
     }).catch((err) => {
         console.log()
@@ -63,7 +63,7 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
         r.data = {
             "message": err.toString()
         };
-        res.json(r);
+        res.send(encryptResponse(r));
     });
 });
 
