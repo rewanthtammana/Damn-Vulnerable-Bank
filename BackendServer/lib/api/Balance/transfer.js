@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');
 const Sequelize = require("sequelize");
-
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateUserToken } = require("../../../middlewares/validateToken");
+var { decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Balance transfer route
@@ -15,7 +15,7 @@ var { validateUserToken } = require("../../../middlewares/validateToken");
  * @param amount         - Amount to be transferred
  * @return               - Status
  */
-router.post('/', validateUserToken, (req, res) => {
+router.post('/', [validateUserToken, decryptRequest], (req, res) => {
     var r = new Response();
     let from_account = req.account_number;
     let to_account = req.body.to_account;

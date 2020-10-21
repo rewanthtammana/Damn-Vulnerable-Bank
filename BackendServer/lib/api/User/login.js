@@ -3,6 +3,7 @@ var router = express.Router();
 var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
+var { decryptRequest } = require("../../../middlewares/crypt");
 const jwt = require("jsonwebtoken");
 
 /**
@@ -14,7 +15,7 @@ const jwt = require("jsonwebtoken");
  * @param password                   - Password to login
  * @return                           - JWT token
  */
-router.post('/', (req, res) => {
+router.post('/', decryptRequest, (req, res) => {
     var r = new Response();
     let username = req.body.username;
     let password = req.body.password;
@@ -26,7 +27,6 @@ router.post('/', (req, res) => {
         }
     }).then((data) => {
         if(data) {
-
             const accessToken = jwt.sign({
                 username: data.username,
                 is_admin: data.is_admin
@@ -35,7 +35,6 @@ router.post('/', (req, res) => {
             r.data = {
                 "accessToken": accessToken
             };
-
             return res.json(r);
         } else {
             r.status = statusCodes.BAD_INPUT;

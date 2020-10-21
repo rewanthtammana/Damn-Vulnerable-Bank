@@ -4,6 +4,7 @@ var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateUserToken } = require("../../../middlewares/validateToken");
+var { decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Change password route
@@ -14,7 +15,7 @@ var { validateUserToken } = require("../../../middlewares/validateToken");
  * @param new_password               - New password
  * @return                           - Status
  */
-router.post('/', validateUserToken, (req, res) => {
+router.post('/', [validateUserToken, decryptRequest], (req, res) => {
     var r = new Response();
     let current_password = req.body.password;
     let new_password = req.body.new_password;

@@ -3,6 +3,7 @@ var router = express.Router();
 var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
+var { decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Registration route
@@ -14,7 +15,7 @@ var statusCodes = require('../../statusCodes');
  * @param password                   - Password to login
  * @return                           - Status
  */
-router.post('/', (req, res) => {
+router.post('/', decryptRequest, (req, res) => {
     var r = new Response();
     let username = req.body.username;
     let password = req.body.password;

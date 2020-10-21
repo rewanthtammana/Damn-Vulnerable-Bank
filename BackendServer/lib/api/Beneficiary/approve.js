@@ -4,6 +4,7 @@ var Model = require('../../../models/index');
 var Response = require('../../Response');
 var statusCodes = require('../../statusCodes');
 var { validateAdminToken } = require("../../../middlewares/validateToken");
+var { decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Beneficiary approve route
@@ -13,7 +14,7 @@ var { validateAdminToken } = require("../../../middlewares/validateToken");
  * @param id                         - ID to be approved
  * @return                           - Status
  */
-router.post('/', validateAdminToken, (req, res) => {
+router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
     var r = new Response();
     let { id } = req.body;
 

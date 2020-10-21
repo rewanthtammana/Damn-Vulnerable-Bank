@@ -4,6 +4,7 @@ var Model = require("../../../models/index");
 var Response = require("../../Response");
 var statusCodes = require("../../statusCodes");
 var { validateUserToken } = require("../../../middlewares/validateToken");
+var { decryptRequest } = require("../../../middlewares/crypt");
 
 /**
  * Beneficiary add route
@@ -12,7 +13,7 @@ var { validateUserToken } = require("../../../middlewares/validateToken");
  * @param account_number - Beneficiary account number to be added to the list
  * @return               - Status
  */
-router.post("/", validateUserToken, (req, res) => {
+router.post("/", [validateUserToken, decryptRequest], (req, res) => {
     var r = new Response();
     let beneficiary_account_number = req.body.account_number;
     let { account_number } = req;
