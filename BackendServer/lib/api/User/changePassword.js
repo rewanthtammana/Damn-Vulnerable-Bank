@@ -31,7 +31,7 @@ router.post('/', [validateUserToken, decryptRequest], (req, res) => {
                 r.data = {
                     "message": "Current password and new password cannot be same"
                 };
-                return res.send(encryptResponse(r));
+                return res.json(encryptResponse(r));
             } else if (user.password == current_password) {
                 Model.users.update({
                     password: new_password
@@ -44,25 +44,25 @@ router.post('/', [validateUserToken, decryptRequest], (req, res) => {
                     r.data = {
                         "message": "Password changed successfully"
                     }
-                    return res.send(encryptResponse(r));
+                    return res.json(encryptResponse(r));
                 });
             } else {
                 r.status = statusCodes.BAD_INPUT;
                 r.data = {
                     "message": "Provided password doesn't match with current password"
                 }
-                return res.send(encryptResponse(r));
+                return res.json(encryptResponse(r));
             }
         } else {
             r.status = statusCodes.NOT_AUTHORIZED;
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        res.send(encryptResponse(r));
+        res.json(encryptResponse(r));
     });
 });
 

@@ -41,13 +41,13 @@ router.post('/', decryptRequest, (req, res) => {
                     account_number: account_number
                 }).then(() => {
                     r.status = statusCodes.SUCCESS;
-                    res.send(encryptResponse(r));
+                    res.json(encryptResponse(r));
                 }).catch((err) => {
                     r.status = statusCodes.SERVER_ERROR;
                     r.data = {
                         "message": err.toString()
                     };
-                    res.send(encryptResponse(r));
+                    res.json(encryptResponse(r));
                 });
             });
         } else {
@@ -55,14 +55,14 @@ router.post('/', decryptRequest, (req, res) => {
             r.data = {
                 "message": "Username already taken"
             };
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     });
 });
 

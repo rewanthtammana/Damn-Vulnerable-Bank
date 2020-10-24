@@ -35,20 +35,20 @@ router.post('/', decryptRequest, (req, res) => {
             r.data = {
                 "accessToken": accessToken
             };
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         } else {
             r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Incorrect username or password"
             }
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     });
 });
 

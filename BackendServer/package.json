@@ -1,21 +1,24 @@
 {
   "name": "damn-vulnerable-bank",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "Standalone backend server for Damn Vulnerable Bank",
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rewanth Cool",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "~1.13.2",
     "debug": "~2.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.1",
     "pm2": "^2.1.6",
     "sequelize": "^6.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rewanth1997/Damn-Vulnerable-Bank"
   }
 }

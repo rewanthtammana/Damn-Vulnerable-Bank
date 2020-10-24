@@ -19,15 +19,22 @@ const decrypt = (encodedInput) => {
   return dec;
 }
 
+const encrypt = (input) => {
+  let enc = operate(input.toString());
+  let b64 = Buffer.from(enc).toString('base64');
+  return b64;
+}
+
 /**
  * Encryption middleware
  * This middleware encrypts server response before forwarding to client
  * @return                           - Calls the next function on success
  */
-const encryptResponse = (input) => {  
-  let enc = operate(input.toString());
-  let b64 = Buffer.from(enc).toString('base64');
-  return b64;
+const encryptResponse = (input) => {
+  let b64 = encrypt(input);
+  return {
+    "enc_data": b64
+  };
 }
 
 /**
@@ -38,7 +45,7 @@ const encryptResponse = (input) => {
 const decryptRequest = function(req, res, next) {
   var r = new Response();
   try {
-    req.body = JSON.parse(decrypt(req.body));
+    req.body = JSON.parse(decrypt(req.body.enc_data));
     next();
   } catch(err) {
     r.status = statusCodes.BAD_INPUT;

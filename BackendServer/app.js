@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const index = require('./routes/index');
 
-app.use(bodyParser.text({ type: 'text/*' }))
+app.use(express.json());
 
 app.use('/api', index);
 

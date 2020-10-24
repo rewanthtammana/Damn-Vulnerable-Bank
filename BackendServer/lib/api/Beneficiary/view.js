@@ -25,13 +25,13 @@ router.post('/', validateUserToken, (req, res) => {
     }).then((data) => {
         r.status = statusCodes.SUCCESS;
         r.data = data;
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     });
 });
 
