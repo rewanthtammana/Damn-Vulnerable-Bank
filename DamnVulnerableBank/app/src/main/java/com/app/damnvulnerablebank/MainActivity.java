@@ -7,15 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,6 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -107,6 +107,24 @@ public class MainActivity extends AppCompatActivity {
         final String url  = sharedPreferences.getString("apiurl",null);
         String endpoint="/api/health/check";
         String finalurl = url+endpoint;
+
+        try {
+            // {"enc_data": "<b64>"}
+            JSONObject encData = new JSONObject();
+            encData.put("enc_data", "GmdBWksdEwAZFAlLVEdDX1FKS0JtQU1DHggaBkNXQQFjTkdBTUMJBgMCFQUIFA5MXUFPDxUdBg4PCkNWY05HQU1DFAYaDwgDBlhTTkUSAgwfHQcJBk9rWkkTbRw=");
+//            String jsonObject = encData.get("enc_data").toString();
+//            String object = jsonObject.toString();
+//            Log.d("DECRYPTING: ", jsonObject);
+            String decryptedString = EncryptDecrypt.decrypt(encData.get("enc_data").toString());
+            JSONObject decryptedResponse = new JSONObject(decryptedString);
+//            String decryptedString = EncryptData.decrypt("GmdBWksdEwAZFAlLVEdDX1FKS0JtQU1DHggaBkNXQQFjTkdBTUMJBgMCFQUIFA5MXUFPDxUdBg4PCkNWY05HQU1DFAYaDwgDBlhTTkUSAgwfHQcJBk9rWkkTbRw=");
+//            JSONObject decryptedResponse = new JSONObject(decryptedString);
+
+            Log.d("DECRYPTING: ", decryptedResponse.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         StringRequest stringRequest = new StringRequest(Request.Method.GET, finalurl,
                 new Response.Listener<String>() {
                     @Override

@@ -55,7 +55,9 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                     public void onResponse(JSONObject response) {
 
                         try {
-                            JSONArray jsonArray=response.getJSONArray("data");
+                            JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+
+                            JSONArray jsonArray=decryptedResponse.getJSONArray("data");
                             for(int i=0;i<jsonArray.length();i++) {
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
                                 BeneficiaryRecords brecorder = new BeneficiaryRecords();

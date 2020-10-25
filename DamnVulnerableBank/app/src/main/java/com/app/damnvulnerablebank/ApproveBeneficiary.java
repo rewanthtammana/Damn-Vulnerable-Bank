@@ -45,10 +45,14 @@ public class ApproveBeneficiary extends AppCompatActivity {
      int n = Integer.parseInt(ed.getText().toString());
 
      final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-     JSONObject object = new JSONObject();
+     JSONObject requestData = new JSONObject();
+     JSONObject requestDataEncrypted = new JSONObject();
      try {
          //input your API parameters
-         object.put("id",n);
+         requestData.put("id",n);
+
+         // Encrypt data before sending
+         requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
 
      } catch (JSONException e) {
          e.printStackTrace();
@@ -58,7 +62,7 @@ public class ApproveBeneficiary extends AppCompatActivity {
      final String url  = sharedPreferences.getString("apiurl",null);
      String endpoint="/api/beneficiary/approve";
      String finalurl = url+endpoint;
-     final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, object,
+     final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, requestDataEncrypted,
              new Response.Listener<JSONObject>() {
                  @Override
                  public void onResponse(JSONObject response) {

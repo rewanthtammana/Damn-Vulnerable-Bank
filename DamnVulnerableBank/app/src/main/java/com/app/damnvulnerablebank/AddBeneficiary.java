@@ -44,15 +44,20 @@ public class AddBeneficiary extends AppCompatActivity {
         String endpoint="/api/beneficiary/add";
         String finalurl = url+endpoint;
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        JSONObject object = new JSONObject();
+        JSONObject requestData = new JSONObject();
+        JSONObject requestDataEncrypted = new JSONObject();
         try {
             //input your API parameters
-            object.put("account_number",edd);
+            requestData.put("account_number",edd);
+
+            // Encrypt the data before sending
+            requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         // Enter the correct url for your api service site
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, object,
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, requestDataEncrypted,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

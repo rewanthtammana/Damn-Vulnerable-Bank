@@ -56,9 +56,10 @@ public class PendingBeneficiary extends AppCompatActivity implements Padapter.On
                     public void onResponse(JSONObject response) {
 
                         try {
-                            JSONArray jsonArray=response.getJSONArray("data");
-                            for(int i=0;i<jsonArray.length();i++) {
+                            JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+                            JSONArray jsonArray = decryptedResponse.getJSONArray("data");
 
+                            for(int i=0; i < jsonArray.length(); i++) {
 
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
                                 PendingBeneficiaryRecords precorder = new PendingBeneficiaryRecords();
