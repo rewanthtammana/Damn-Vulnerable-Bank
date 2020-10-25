@@ -48,16 +48,19 @@ public class GetTransactions extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url  = sharedPreferences.getString("apiurl",null);
         String endpoint="/api/transactions/view";
-        final String finalurl = url+endpoint;
+        final String finalurl = url + endpoint;
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalurl, null,
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, finalurl, null,
                 new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                     try {
-                        JSONArray jsonArray=response.getJSONArray("data");
-                        for(int i=0;i<jsonArray.length();i++) {
+
+                        JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+
+                        JSONArray jsonArray = decryptedResponse.getJSONArray("data");
+                        for(int i = 0; i < jsonArray.length(); i++) {
 
 
                             JSONObject transrecobject = jsonArray.getJSONObject(i);

@@ -42,16 +42,20 @@ public class RegisterBank extends AppCompatActivity {
         String finalUrl = url + endpoint;
 
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        JSONObject object = new JSONObject();
+        JSONObject requestData = new JSONObject();
+        JSONObject requestDataEncrypted = new JSONObject();
         try {
             //input your API parameters
-            object.put("username", email);
-            object.put("password", password);
+            requestData.put("username", email);
+            requestData.put("password", password);
+
+            // Encrypt data before sending
+            requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
         // Enter the correct url for your api service site
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalUrl, object,
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalUrl, requestDataEncrypted,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

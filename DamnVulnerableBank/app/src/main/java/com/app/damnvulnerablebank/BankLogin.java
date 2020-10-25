@@ -20,7 +20,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,23 +53,28 @@ public class BankLogin extends AppCompatActivity {
         String finalurl = url + endpoint;
 
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        JSONObject object = new JSONObject();
+        JSONObject requestData = new JSONObject();
+        JSONObject requestDataEncrypted = new JSONObject();
         try {
-            //input your API parameters
-            object.put("username",email);
-            object.put("password",password);
+            // Input your API parameters
+            requestData.put("username",email);
+            requestData.put("password",password);
+
+            // Encrypt data before sending
+            requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
         // Enter the correct url for your api service site
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, object,
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, requestDataEncrypted,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
 
+                            JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
-                            JSONObject obj = response.getJSONObject("data");
+                            JSONObject obj = decryptedResponse.getJSONObject("data");
                             String accessToken=obj.getString("accessToken");
                             SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
                             Log.d("accesstoken",accessToken);
