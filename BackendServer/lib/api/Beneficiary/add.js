@@ -23,13 +23,13 @@ router.post("/", [validateUserToken, decryptRequest], (req, res) => {
         r.data = {
             "message": "Cannot add self account to beneficiary"
         };
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     } else if (beneficiary_account_number == "") {
         r.status = statusCodes.BAD_INPUT;
         r.data = {
             "message": "Beneficiary account number cannot be empty"
         };
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     }
     
     Model.beneficiaries.findAll({
@@ -44,31 +44,31 @@ router.post("/", [validateUserToken, decryptRequest], (req, res) => {
             r.data = {
                 "message": "Enter valid account number"
             };
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         } else if (arr.includes(parseInt(beneficiary_account_number))) {
             r.status = statusCodes.BAD_INPUT;
             r.data = {
                 "message": "Account already exists in beneficiary list"
             };
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         } else {
             Model.beneficiaries.create({
                 account_number: account_number,
                 beneficiary_account_number: beneficiary_account_number
             }).then(() => {
                 r.status = statusCodes.SUCCESS;
-                return res.send(encryptResponse(r));
+                return res.json(encryptResponse(r));
             }).catch((err) => {
                 r.status = statusCodes.SERVER_ERROR;
                 r.data = err;
-                return res.send(encryptResponse(r));
+                return res.json(encryptResponse(r));
             });
         }
 
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = err;
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     });
 });
 

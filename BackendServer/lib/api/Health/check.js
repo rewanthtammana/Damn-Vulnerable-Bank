@@ -15,13 +15,13 @@ router.get('/', function(req, res) {
   var r = new Response();
   Model.users.findAll().then(function(data) {
     r.status = statusCodes.SUCCESS;
-    return res.send(encryptResponse(r));
+    return res.json(encryptResponse(r));
   }).catch((err) => {
     r.status = statusCodes.SERVER_ERROR;
     r.data = {
       "message": err.toString()
   };
-    return res.send(encryptResponse(r));
+    return res.json(encryptResponse(r));
   });
 });
 

@@ -28,13 +28,13 @@ router.post('/', validateUserToken, (req, res) => {
     }).then((transactions) => {
         r.status = statusCodes.SUCCESS;
         r.data = transactions;
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        return res.send(encryptResponse(r));
+        return res.json(encryptResponse(r));
     });
 });
 

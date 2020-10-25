@@ -24,17 +24,17 @@ router.post('/', validateUserToken, (req, res) => {
         if(user) {
             r.status = statusCodes.SUCCESS;
             r.data = user;
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         } else {
             r.status = statusCodes.NOT_AUTHORIZED;
-            return res.send(encryptResponse(r));;
+            return res.json(encryptResponse(r));;
         }
     }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
             "message": err.toString()
         };
-        res.send(encryptResponse(r));;
+        res.json(encryptResponse(r));;
     });
 });
 

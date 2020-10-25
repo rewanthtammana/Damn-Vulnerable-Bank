@@ -39,14 +39,14 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
                         }
                     }).then(() => {
                         r.status = statusCodes.SUCCESS;
-                        return res.send(encryptResponse(r));
+                        return res.json(encryptResponse(r));
                     });
                 } else {
                     r.status = statusCodes.BAD_INPUT;
                     r.data = {
                         "message": "Beneficiary with given account number doesn't exist"
                     };
-                    return res.send(encryptResponse(r));
+                    return res.json(encryptResponse(r));
                 }
             });
 
@@ -55,7 +55,7 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
             r.data = {
                 "message": "Pending beneficiary with given details not found"
             }
-            return res.send(encryptResponse(r));
+            return res.json(encryptResponse(r));
         }
     }).catch((err) => {
         console.log()
@@ -63,7 +63,7 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
         r.data = {
             "message": err.toString()
         };
-        res.send(encryptResponse(r));
+        res.json(encryptResponse(r));
     });
 });
 
