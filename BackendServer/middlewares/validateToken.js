@@ -2,6 +2,7 @@ const Model = require("../models/index");
 const Response = require('../lib/Response');
 const statusCodes = require("../lib/statusCodes");
 const jwt = require("jsonwebtoken");
+var { encryptResponse } = require("../middlewares/crypt");
 
 /**
  * User token validation middleware
@@ -18,16 +19,16 @@ const validateUserToken = function(req, res, next) {
 
   if (token == null) {
       r.status = statusCodes.NOT_AUTHORIZED;
-      return res.json(r);
+      return res.json(encryptResponse(r));
   }
 
   jwt.verify(token, "secret", (err, data) => {
       if (err) {
           r.status = statusCodes.FORBIDDEN;
           r.data = {
-              "error": err.toString()
+              "message": err.toString()
           }
-          return res.json(r);
+          return res.json(encryptResponse(r));
       }
       
       Model.users.findOne({
@@ -41,9 +42,9 @@ const validateUserToken = function(req, res, next) {
       }).catch((err) => {
         r.status = statusCodes.SERVER_ERROR;
         r.data = {
-            "error": err.toString()
+            "message": err.toString()
         };
-        return res.json(r);
+        return res.json(encryptResponse(r));
     });
   });
 };
@@ -64,13 +65,13 @@ const validateAdminToken = function(req, res, next) {
   
     if (token == null) {
         r.status = statusCodes.NOT_AUTHORIZED;
-        return res.json(r);
+        return res.json(encryptResponse(r));
     }
   
     jwt.verify(token, "secret", (err, data) => {
         if (err) {
             r.status = statusCodes.FORBIDDEN;
-            return res.json(r);
+            return res.json(encryptResponse(r));
         }
         
         Model.users.findOne({
@@ -83,18 +84,18 @@ const validateAdminToken = function(req, res, next) {
             if (!data.is_admin) {
                 r.status = statusCodes.FORBIDDEN;
                 r.data = {
-                    "error": "Exclusive endpoint for admins only"
+                    "message": "Exclusive endpoint for admins only"
                 };
-                return res.json(r);
+                return res.json(encryptResponse(r));
             } else {
                 next();
             }
         }).catch((err) => {
             r.status = statusCodes.SERVER_ERROR;
             r.data = {
-                "error": err.toString()
+                "message": err.toString()
             };
-            return res.json(r);
+            return res.json(encryptResponse(r));
         });
     });
 };
