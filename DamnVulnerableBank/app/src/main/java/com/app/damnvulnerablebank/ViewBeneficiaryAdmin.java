@@ -60,13 +60,16 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
                             JSONArray jsonArray=decryptedResponse.getJSONArray("data");
-                            Toast.makeText(getApplicationContext(), "User created" + decryptedResponse, Toast.LENGTH_SHORT).show();
                             for(int i=0;i<jsonArray.length();i++) {
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
                                 BeneficiaryRecords brecorder = new BeneficiaryRecords();
+                                String approved=transrecobject.getString("approved").toString();
+                                if(approved=="false")
+                                {continue;}
+                                else{
                                 brecorder.setBeneficiaryAccount(transrecobject.getString("beneficiary_account_number").toString());
                                 //brecorder.setIsapproved(transrecobject.getString("approved").toString());
-                                brecords.add(brecorder);
+                                brecords.add(brecorder);}
                             }
 
                         } catch (JSONException e) {
