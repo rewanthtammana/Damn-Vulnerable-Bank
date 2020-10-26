@@ -7,16 +7,17 @@
 
     <application
         android:allowBackup="true"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="false"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CurrencyRates" >
+        <activity android:name=".Myprofile"></activity>
+        <activity android:name=".CurrencyRates">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -36,14 +37,18 @@
         <activity android:name=".ApproveBeneficiary" />
         <activity android:name=".PendingBeneficiary" />
         <activity android:name=".AddBeneficiary" />
-        <activity android:name=".SendMoney" android:exported="true">
+        <activity
+            android:name=".SendMoney"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ViewBeneficiaryAdmin" />
         </activity>
         <activity android:name=".ViewBeneficiaryAdmin" />
-        <activity android:name=".GetTransactions"  />
-        <activity android:name=".ViewBalance" android:exported="true"/>
+        <activity android:name=".GetTransactions" />
+        <activity
+            android:name=".ViewBalance"
+            android:exported="true" />
         <activity android:name=".Dashboard" />
         <activity android:name=".RegisterBank" />
         <activity android:name=".BankLogin" />

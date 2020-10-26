@@ -69,7 +69,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:src="@drawable/addben"/>
+                android:src="@drawable/addbenif"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -135,13 +135,13 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="viewBeneficiaryAdmin"
+            android:onClick="viewbalance"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:src="@drawable/sends"/>
+                android:src="@drawable/balance"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/muli_extrabold"
                 android:padding="2dp"
-                android:text="Transfer Money"
+                android:text="My Balance"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -171,13 +171,13 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:padding="16dp"
-            android:onClick="viewBalance"
+            android:onClick="viewBeneficiaryAdmin"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:src="@drawable/balance"/>
+                android:src="@drawable/sends"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/muli_extrabold"
                 android:padding="2dp"
-                android:text="View Balance"
+                android:text="Transfer Money"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -337,7 +337,42 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="12dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="myprofile"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/addben"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_extrabold"
+                android:padding="2dp"
+                android:text="My Profile"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </GridLayout>
 

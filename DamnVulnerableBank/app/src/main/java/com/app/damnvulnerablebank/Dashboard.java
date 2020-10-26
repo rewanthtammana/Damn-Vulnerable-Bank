@@ -39,7 +39,10 @@ public class Dashboard extends AppCompatActivity {
     public void addBeneficiary(View v){
         startActivity(new Intent(getApplicationContext(), AddBeneficiary.class));
     }
-    public void viewBalance(View V){
+    public void myprofile(View V){
+        startActivity(new Intent(getApplicationContext(), Myprofile.class));
+    }
+    public void viewbalance(View V){
         startActivity(new Intent(getApplicationContext(), ViewBalance.class));
     }
     public void viewTransactions(View V){
