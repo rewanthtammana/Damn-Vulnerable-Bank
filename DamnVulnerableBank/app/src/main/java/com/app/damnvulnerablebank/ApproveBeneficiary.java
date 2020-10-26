@@ -68,7 +68,11 @@ public class ApproveBeneficiary extends AppCompatActivity {
                  public void onResponse(JSONObject response) {
 
 
-                     Toast.makeText(getApplicationContext(),""+response, Toast.LENGTH_SHORT).show();
+                     try {
+                         Toast.makeText(getApplicationContext(),""+EncryptDecrypt.decrypt(response.get("enc_data").toString()), Toast.LENGTH_SHORT).show();
+                     } catch (JSONException e) {
+                         e.printStackTrace();
+                     }
 
 
                      startActivity(new Intent(ApproveBeneficiary.this, Dashboard.class));

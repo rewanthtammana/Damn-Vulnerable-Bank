@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -48,15 +49,24 @@ public class PendingBeneficiary extends AppCompatActivity implements Padapter.On
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url  = sharedPreferences.getString("apiurl",null);
         String endpoint = "/api/beneficiary/pending";
-        String finalurl = url + endpoint;
+        String finalUrl = url + endpoint;
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalurl, null,
+        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 
                         try {
+
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+
+                            // Check for error message
+                            if(decryptedResponse.getJSONObject("data").has("message")) {
+                                Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                                return;
+                                // This is buggy. Need to call Login activity again if incorrect credentials are given
+                            }
+
                             JSONArray jsonArray = decryptedResponse.getJSONArray("data");
 
                             for(int i=0; i < jsonArray.length(); i++) {

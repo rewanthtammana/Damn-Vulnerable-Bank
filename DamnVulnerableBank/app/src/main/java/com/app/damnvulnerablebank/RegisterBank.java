@@ -59,7 +59,11 @@ public class RegisterBank extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), "User created" + response, Toast.LENGTH_SHORT).show();
+                        try {
+                            Toast.makeText(getApplicationContext(), "User created" + EncryptDecrypt.decrypt(response.get("enc_data").toString()), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         startActivity(new Intent(RegisterBank.this, BankLogin.class));
 
                     }

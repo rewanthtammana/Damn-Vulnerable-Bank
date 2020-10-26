@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -45,6 +46,13 @@ public class ViewBalance extends AppCompatActivity {
                         try {
 
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+
+                            // Check for error message
+                            if(decryptedResponse.getJSONObject("data").has("message")) {
+                                Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                                return;
+                                // This is buggy. Need to call Login activity again if incorrect credentials are given
+                            }
 
                             JSONObject obj = decryptedResponse.getJSONObject("data");
                             String accountid=obj.getString("account_number");

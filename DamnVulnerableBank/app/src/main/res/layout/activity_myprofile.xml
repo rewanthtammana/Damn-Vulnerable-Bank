@@ -9,6 +9,7 @@
     <ImageView
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_width="342dp"
         android:layout_height="155dp"
         android:src="@drawable/myprofile" />
@@ -17,6 +18,7 @@
         android:id="@+id/textView"
         android:layout_width="214dp"
         android:layout_height="63dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:text="   My Profile"
         android:layout_marginTop="220dp"
@@ -26,8 +28,9 @@
         tools:layout_editor_absoluteY="226dp" />
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="209dp"
+        android:layout_width="250dp"
         android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/textView"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
@@ -39,8 +42,9 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_below="@id/textView1"
-        android:layout_width="209dp"
+        android:layout_width="250dp"
         android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/muli_extrabold"
@@ -50,8 +54,9 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_below="@id/textView2"
-        android:layout_width="209dp"
+        android:layout_width="250dp"
         android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/muli_extrabold"
@@ -62,8 +67,9 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_below="@id/textView3"
-        android:layout_width="209dp"
+        android:layout_width="250dp"
         android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/muli_extrabold"

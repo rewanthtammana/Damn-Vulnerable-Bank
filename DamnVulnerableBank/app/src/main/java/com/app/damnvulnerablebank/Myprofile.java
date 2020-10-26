@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,6 +30,7 @@ public class Myprofile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myprofile);
         final TextView tv1=findViewById(R.id.textView1);
+//        tv1.setTypeface(null, Typeface.BOLD_ITALIC);
         final TextView tv2=findViewById(R.id.textView2);
         final TextView tv3=findViewById(R.id.textView3);
         final TextView tv4=findViewById(R.id.textView4);
@@ -49,6 +52,13 @@ public class Myprofile extends AppCompatActivity {
 
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
+                            // Check for error message
+                            if(decryptedResponse.getJSONObject("data").has("message")) {
+                                Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                                return;
+                                // This is buggy. Need to call Login activity again if incorrect credentials are given
+                            }
+
                             JSONObject obj = decryptedResponse.getJSONObject("data");
                             String balance=obj.getString("balance");
                             String account_number =obj.getString("account_number");
@@ -56,8 +66,13 @@ public class Myprofile extends AppCompatActivity {
                             String is_admin =obj.getString("is_admin");
                             tv1.setText("Name:\t\t" + username);
                             tv2.setText("Account Number:\t\t" + account_number);
-                            tv3.setText("Balance:\t\t" +balance);
-                            tv4.setText("Admin:\t\t" + is_admin);
+                            tv3.setText("Balance:\t\t$" +balance);
+                            if(is_admin == "true") {
+                                tv4.setText("Admin:\t\tYes");
+                            } else {
+                                tv4.setText("Admin:\t\tNo");
+                            }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

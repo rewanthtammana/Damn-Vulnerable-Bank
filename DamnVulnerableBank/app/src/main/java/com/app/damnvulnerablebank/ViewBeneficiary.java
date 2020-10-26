@@ -56,6 +56,13 @@ public class ViewBeneficiary extends AppCompatActivity  implements Badapter.OnIt
                         try {
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
+                            // Check for error message
+                            if(decryptedResponse.getJSONObject("data").has("message")) {
+                                Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                                return;
+                                // This is buggy. Need to call Login activity again if incorrect credentials are given
+                            }
+
                             JSONArray jsonArray = decryptedResponse.getJSONArray("data");
                             for(int i=0; i < jsonArray.length(); i++) {
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);

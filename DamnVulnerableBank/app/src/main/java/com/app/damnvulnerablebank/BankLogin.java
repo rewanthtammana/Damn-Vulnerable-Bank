@@ -74,6 +74,13 @@ public class BankLogin extends AppCompatActivity {
 
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
+                            // Check for error message
+                            if(decryptedResponse.getJSONObject("data").has("message")) {
+                                Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                                return;
+                                // This is buggy. Need to call Login activity again if incorrect credentials are given
+                            }
+
                             JSONObject obj = decryptedResponse.getJSONObject("data");
                             String accessToken=obj.getString("accessToken");
                             SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
@@ -96,11 +103,6 @@ public class BankLogin extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
