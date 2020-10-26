@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,8 +33,7 @@ public class ViewBeneficiaryAdmin extends AppCompatActivity  implements Badapter
 public static final String beneficiary_account_number="beneficiary_account_number";
     RecyclerView recyclerView;
     List<BeneficiaryRecords> brecords;
-
-
+    private TextView emptyView;
     Badapter badapter;
 
     @Override
@@ -40,6 +41,7 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewbenif);
         recyclerView=findViewById(R.id.benif);
+        emptyView=findViewById(R.id.empty_view);
         brecords=new ArrayList<>();
         viewBeneficiaries();
     }
@@ -68,9 +70,13 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                             for(int i=0;i<jsonArray.length();i++) {
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
                                 BeneficiaryRecords brecorder = new BeneficiaryRecords();
+                                String approved=transrecobject.getString("approved").toString();
+                                if(approved=="false")
+                                {continue;}
+                                else{
                                 brecorder.setBeneficiaryAccount(transrecobject.getString("beneficiary_account_number").toString());
                                 //brecorder.setIsapproved(transrecobject.getString("approved").toString());
-                                brecords.add(brecorder);
+                                brecords.add(brecorder);}
                             }
 
                         } catch (JSONException e) {
@@ -80,8 +86,17 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         badapter=new Badapter(getApplicationContext(),brecords);
                         recyclerView.setAdapter(badapter);
-                        badapter.setOnItemClickListener(ViewBeneficiaryAdmin.this);
 
+                        Integer count=badapter.getItemCount();
+                        if (count == 0) {
+                            recyclerView.setVisibility(View.GONE);
+                            emptyView.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            recyclerView.setVisibility(View.VISIBLE);
+                            emptyView.setVisibility(View.GONE);
+                        }
+                        badapter.setOnItemClickListener(ViewBeneficiaryAdmin.this);
                     }
 
                 }, new Response.ErrorListener() {

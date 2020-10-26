@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,15 +32,15 @@ public class ViewBeneficiary extends AppCompatActivity  implements Badapter.OnIt
     public static final String beneficiary_account_number="beneficiary_account_number";
     RecyclerView recyclerView;
     List<BeneficiaryRecords> brecords;
-
-
     Badapter badapter;
+    private TextView emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewbenif);
         recyclerView=findViewById(R.id.benif);
+        emptyView = findViewById(R.id.empty_view);
         brecords=new ArrayList<>();
         viewBeneficiaries();
     }
@@ -79,8 +81,17 @@ public class ViewBeneficiary extends AppCompatActivity  implements Badapter.OnIt
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         badapter=new Badapter(getApplicationContext(),brecords);
                         recyclerView.setAdapter(badapter);
-                        badapter.setOnItemClickListener(ViewBeneficiary.this);
 
+                        Integer count=badapter.getItemCount();
+                        if (count == 0) {
+                            recyclerView.setVisibility(View.GONE);
+                            emptyView.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            recyclerView.setVisibility(View.VISIBLE);
+                            emptyView.setVisibility(View.GONE);
+                        }
+                        badapter.setOnItemClickListener(ViewBeneficiary.this);
                     }
 
                 }, new Response.ErrorListener() {
