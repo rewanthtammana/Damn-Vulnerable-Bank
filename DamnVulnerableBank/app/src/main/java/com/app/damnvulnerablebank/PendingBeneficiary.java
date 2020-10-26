@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,7 +33,7 @@ public class PendingBeneficiary extends AppCompatActivity implements Padapter.On
     public static final String id="id";
     RecyclerView recyclerView;
     List<PendingBeneficiaryRecords> precords;
-
+    private TextView emptyView;
     Padapter padapter;
 
     @Override
@@ -40,7 +42,7 @@ public class PendingBeneficiary extends AppCompatActivity implements Padapter.On
         setContentView(R.layout.activity_pendingbenificiary);
         recyclerView=findViewById(R.id.pendb);
         precords=new ArrayList<>();
-
+        emptyView = findViewById(R.id.empty_view);
         getPendingBeneficiaries();
     }
 
@@ -77,6 +79,15 @@ public class PendingBeneficiary extends AppCompatActivity implements Padapter.On
                         padapter = new Padapter(getApplicationContext(),precords);
                         recyclerView.setAdapter(padapter);
                         padapter.setOnItemClickListener(PendingBeneficiary.this);
+                        Integer count=padapter.getItemCount();
+                        if (count == 0) {
+                            recyclerView.setVisibility(View.GONE);
+                            emptyView.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            recyclerView.setVisibility(View.VISIBLE);
+                            emptyView.setVisibility(View.GONE);
+                        }
 
                     }
 

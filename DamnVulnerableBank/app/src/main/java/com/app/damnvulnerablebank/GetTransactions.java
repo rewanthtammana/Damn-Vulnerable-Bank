@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,8 +32,11 @@ public class GetTransactions extends AppCompatActivity {
 
         RecyclerView recyclerView;
         List<TransactionRecords> trecords;
+        private TextView emptyView;
 
-        Adapter adapter;
+
+    Adapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +45,9 @@ public class GetTransactions extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.transt);
         trecords=new ArrayList<>();
-
+        emptyView = findViewById(R.id.empty_view);
         extractRecords();
+
     }
 
     private void extractRecords() {
@@ -78,7 +84,15 @@ public class GetTransactions extends AppCompatActivity {
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 adapter=new Adapter(getApplicationContext(),trecords);
                 recyclerView.setAdapter(adapter);
-
+                Integer count=adapter.getItemCount();
+                if (count == 0) {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
+                }
                 }
 
         }, new Response.ErrorListener() {
