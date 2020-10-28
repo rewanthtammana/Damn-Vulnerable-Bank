@@ -54,6 +54,6 @@ Thanks to these amazing people
 
 |   |   |   |
 |---|---|---|
-| Rewanth Cool  | [Github](https://github.com/rewanth1997/)  | [LinkedIn](https://www.linkedin.com/in/rewanthcool/)  |
-| Hrushikesh Kakade  | [Github](https://github.com/HrushikeshK/)  | [LinkedIn](https://www.linkedin.com/in/hrushikeshkakade/)  |
-| Akshansh Jaiswal  | [Github](https://github.com/jaiswalakshansh)  | [LinkedIn](https://www.linkedin.com/in/akshanshjaiswal/)  |
+| Rewanth Cool (Rest API)  | [Github](https://github.com/rewanth1997/)  | [LinkedIn](https://www.linkedin.com/in/rewanthcool/)  |
+| Hrushikesh Kakade (Android App)  | [Github](https://github.com/HrushikeshK/)  | [LinkedIn](https://www.linkedin.com/in/hrushikeshkakade/)  |
+| Akshansh Jaiswal (Android App)  | [Github](https://github.com/jaiswalakshansh)  | [LinkedIn](https://www.linkedin.com/in/akshanshjaiswal/)  |

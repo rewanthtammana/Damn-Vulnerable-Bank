@@ -39,6 +39,9 @@ router.post('/', [validateAdminToken, decryptRequest], (req, res) => {
                         }
                     }).then(() => {
                         r.status = statusCodes.SUCCESS;
+                        r.data = {
+                            "message": "Sucess"
+                        }
                         return res.json(encryptResponse(r));
                     });
                 } else {
