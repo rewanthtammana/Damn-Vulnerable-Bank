@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -48,25 +50,25 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_banklogin);
 
-      //  boolean isDebuggable = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
- /*       if(android.os.Debug.isDebuggerConnected()){
+       boolean isDebuggable = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+       if(android.os.Debug.isDebuggerConnected()){
             Toast.makeText(getApplicationContext(), "Debug from vm",Toast.LENGTH_LONG).show();
         }
 
         if(EmulatorDetectortest.isEmulator()){
             Toast.makeText(getApplicationContext(), "Emulator Detected",Toast.LENGTH_LONG).show();
-        }*/
+        }
 
 
 
- /*       if(isDebuggable){
+        if(isDebuggable){
             Toast.makeText(getApplicationContext(),"Debbuger is Running", Toast.LENGTH_SHORT).show();
-     } */
+     }
 
-//        if(RootUtil.isDeviceRooted()) {
-//            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
-//            finish();
-//        }
+        if(RootUtil.isDeviceRooted()) {
+            Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
 
 
