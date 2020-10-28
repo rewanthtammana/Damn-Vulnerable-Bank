@@ -55,6 +55,9 @@ router.post('/', [validateUserToken, decryptRequest], (req, res) => {
             }
         } else {
             r.status = statusCodes.NOT_AUTHORIZED;
+            r.data = {
+                "message": "Not authorized"
+            }
             return res.json(encryptResponse(r));
         }
     }).catch((err) => {

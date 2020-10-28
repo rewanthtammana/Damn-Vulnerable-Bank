@@ -15,6 +15,9 @@ router.get('/', function(req, res) {
   var r = new Response();
   Model.users.findAll().then(function(data) {
     r.status = statusCodes.SUCCESS;
+    r.data = {
+      "message": "Sucess"
+    }
     return res.json(encryptResponse(r));
   }).catch((err) => {
     r.status = statusCodes.SERVER_ERROR;

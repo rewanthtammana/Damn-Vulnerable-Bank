@@ -41,6 +41,9 @@ router.post('/', decryptRequest, (req, res) => {
                     account_number: account_number
                 }).then(() => {
                     r.status = statusCodes.SUCCESS;
+                    r.data = {
+                        "message": "Sucess"
+                    }
                     res.json(encryptResponse(r));
                 }).catch((err) => {
                     r.status = statusCodes.SERVER_ERROR;

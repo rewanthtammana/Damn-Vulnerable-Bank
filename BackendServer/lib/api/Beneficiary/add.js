@@ -57,6 +57,9 @@ router.post("/", [validateUserToken, decryptRequest], (req, res) => {
                 beneficiary_account_number: beneficiary_account_number
             }).then(() => {
                 r.status = statusCodes.SUCCESS;
+                r.data = {
+                    "message": "Success"
+                }
                 return res.json(encryptResponse(r));
             }).catch((err) => {
                 r.status = statusCodes.SERVER_ERROR;

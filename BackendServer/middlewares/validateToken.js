@@ -19,6 +19,9 @@ const validateUserToken = function(req, res, next) {
 
   if (token == null) {
       r.status = statusCodes.NOT_AUTHORIZED;
+      r.data = {
+        "message": "Not authorized"
+      }
       return res.json(encryptResponse(r));
   }
 
@@ -65,12 +68,18 @@ const validateAdminToken = function(req, res, next) {
   
     if (token == null) {
         r.status = statusCodes.NOT_AUTHORIZED;
+        r.data = {
+            "message": "Not authorized"
+        }
         return res.json(encryptResponse(r));
     }
   
     jwt.verify(token, "secret", (err, data) => {
         if (err) {
             r.status = statusCodes.FORBIDDEN;
+            r.data = {
+                "message": err.toString()
+            }
             return res.json(encryptResponse(r));
         }
         

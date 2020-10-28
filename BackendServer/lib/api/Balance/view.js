@@ -20,13 +20,16 @@ router.post('/', validateUserToken, (req, res) => {
             account_number: req.account_number
         },
         attributes: ["balance", "account_number"]
-    }).then((user) => {
-        if(user) {
+    }).then((data) => {
+        if(data) {
             r.status = statusCodes.SUCCESS;
-            r.data = user;
+            r.data = data;
             return res.json(encryptResponse(r));
         } else {
             r.status = statusCodes.NOT_AUTHORIZED;
+            r.data = {
+                "message": "Not authorized"
+            }
             return res.json(encryptResponse(r));;
         }
     }).catch((err) => {
