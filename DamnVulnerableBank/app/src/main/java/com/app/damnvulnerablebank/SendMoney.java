@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,12 +62,22 @@ public class SendMoney extends AppCompatActivity {
         final String finalUrl = url+endpoint;
         EditText ed = findViewById(R.id.edact);
         EditText ed1 = findViewById(R.id.edamt);
-        int n = Integer.parseInt(ed.getText().toString());
-        int na = Integer.parseInt(ed1.getText().toString());
+        int n = 0;
+        int na = 0;
+
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject requestData = new JSONObject();
         JSONObject requestDataEncrypted = new JSONObject();
         try {
+
+            // fetch values
+            if (ed.getText().toString() != "" && ed1.getText().toString() != "") {
+                n = Integer.parseInt(ed.getText().toString());
+                na = Integer.parseInt(ed1.getText().toString());
+            } else {
+                Toast.makeText(getApplicationContext(), "Invalid Input ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SendMoney.this, SendMoney.class));
+            }
             //input your API parameters
             requestData.put("to_account",n);
             requestData.put("amount",na);
@@ -82,8 +93,20 @@ public class SendMoney extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
 
-
                         try {
+
+                        JSONObject decryptedResponse =  new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+                        Log.d("Send Money", decryptedResponse.toString());
+
+                        if(decryptedResponse.getJSONObject("status").getInt("code") != 200) {
+                            Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+
+                            return;
+                            // This is buggy. Need to call Login activity again if incorrect credentials are given
+                        }
+
+
+
                             Toast.makeText(getApplicationContext(),""+EncryptDecrypt.decrypt(response.get("enc_data").toString()), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();

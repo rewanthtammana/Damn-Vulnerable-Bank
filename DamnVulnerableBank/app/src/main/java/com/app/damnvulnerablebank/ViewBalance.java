@@ -48,7 +48,7 @@ public class ViewBalance extends AppCompatActivity {
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
                             // Check for error message
-                            if(decryptedResponse.getJSONObject("data").has("message")) {
+                            if(decryptedResponse.getJSONObject("status").getInt("code") != 200) {
                                 Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
                                 return;
                                 // This is buggy. Need to call Login activity again if incorrect credentials are given
