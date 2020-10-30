@@ -48,6 +48,16 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - [ ] Find a way to store database and mount it while using docker
 - [X] Dockerize environment
 
+## Building the Apk with Obfuscation
+
+- Go to Build options and select Generate Signed Bundled/Apk
+- Then select Apk as option and click next
+- Now we need a keystore to sign an apk 
+- Create a new keystore and remember its password
+- After creating select that keystore and enter password 
+- Now select Build variant as Realese and signature version as V2
+- Now we can build the apk successfully
+
 ## Authors
 
 Thanks to these amazing people
