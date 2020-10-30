@@ -62,11 +62,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Emulator Detected",Toast.LENGTH_LONG).show();
         }
 
-
-
         if(isDebuggable){
             Toast.makeText(getApplicationContext(),"Debbuger is Running", Toast.LENGTH_SHORT).show();
-     }
+        }
 
         if(RootUtil.isDeviceRooted()) {
             Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();

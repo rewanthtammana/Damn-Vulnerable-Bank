@@ -99,6 +99,7 @@ public class BankLogin extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(BankLogin.this, BankLogin.class));
             }
         });
         requestQueue.add(jsonObjectRequest);
