@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_banklogin);
 
        boolean isDebuggable = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+       FridaCheckJNI fridaCheck = new FridaCheckJNI();
+
+
        if(android.os.Debug.isDebuggerConnected()){
             Toast.makeText(getApplicationContext(), "Debug from vm",Toast.LENGTH_LONG).show();
         }
@@ -69,6 +72,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Phone is Rooted", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+        // Check frida
+
+        if(fridaCheck.fridaCheck() == 1) {
+            Toast.makeText(getApplicationContext(), "Frida is running", Toast.LENGTH_SHORT).show();
+            Log.d("FRIDA CHECK", "FRIDA Server DETECTED");
+
+            finish();
+        } else {
+            Log.d("FRIDA CHECK", "FRIDA Server NOT RUNNING");
+            Toast.makeText(getApplicationContext(), "Frida is NOT running", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
 
