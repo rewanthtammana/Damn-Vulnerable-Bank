@@ -4,7 +4,7 @@
 ## About application
 Damn Vulnerable Bank Android Application aims to provide an interface for everyone to get a detailed understanding with internals and security aspects of android application.
 
-<img src="https://github.com/rewanth1997/Damn-Vulnerable-Bank/raw/master/images/screen1.png" align="centre" height="600" width="395"><img src="https://github.com/rewanth1997/Damn-Vulnerable-Bank/blob/master/images/screen2.png" align="centre" height="600" width="395">
+<img src="https://github.com/rewanth1997/Damn-Vulnerable-Bank/blob/master/images/screen1.jpg" align="centre" height="600" width="395"><img src="https://github.com/rewanth1997/Damn-Vulnerable-Bank/blob/master/images/screen2.jpg" align="centre" height="600" width="395">
 
 ## How to Use Application
 - Clone the repository and run the [Backend Server](https://github.com/rewanth1997/Damn-Vulnerable-Bank/tree/master/BackendServer) as per instructions in the link. 
