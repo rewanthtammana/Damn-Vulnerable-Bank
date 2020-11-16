@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -97,14 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void addApi(View view){
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("apiurl", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        EditText ed=findViewById(R.id.apiurl);
-        final String api =ed.getText().toString().trim();
-        editor.putString("apiurl", api);
-        editor.apply();
-    }
+
 
     public void loginPage(View view){
         Intent intent =new Intent(getApplicationContext(), BankLogin.class);
@@ -117,6 +111,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void healthCheck(View v){
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("apiurl", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        EditText ed=findViewById(R.id.apiurl);
+        final String api =ed.getText().toString().trim();
+        editor.putString("apiurl", api);
+        editor.apply();
         final View vButton = findViewById(R.id.healthc);
         final Button bButton = (Button) findViewById(R.id.healthc);
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -147,11 +147,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         bButton.setText("Api is Up");
+                        bButton.setTextColor(Color.GREEN);
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 bButton.setText("Api is Down");
+                bButton.setTextColor(Color.RED);
             }
         });
         queue.add(stringRequest);

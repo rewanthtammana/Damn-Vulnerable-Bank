@@ -69,17 +69,6 @@
         </LinearLayout>
 
 
-        <Button
-            android:id="@+id/healthc"
-            android:layout_width="98dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/circle"
-            android:onClick="healthCheck"
-            android:text="Health Check"
-            android:textColor="@color/white" />
 
 
         <EditText
@@ -91,13 +80,15 @@
             android:hint="API URL  e.g http://127.0.0.1:8000" />
 
         <Button
-            android:id="@+id/addapi"
-            android:layout_width="wrap_content"
+            android:id="@+id/healthc"
+            android:layout_width="98dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
             android:background="@drawable/circle"
-            android:onClick="addApi"
-            android:text="Add API"
+            android:onClick="healthCheck"
+            android:text="Health Check"
             android:textColor="@color/white" />
 
 
