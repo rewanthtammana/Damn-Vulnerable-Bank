@@ -13,7 +13,7 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - Test running status by pressing health check
 - Now create an account by signup option and then login with your credentials
 - Now you can see the dashboard and perform banking operations
-- Login as admin to approve benificiary
+- Login as admin to approve beneficiary
 - The database is pre-populated with a few users for quick exploration.
 
 |  Username |  Password |  Account Number | Beneficiaries | Admin privileges |
@@ -49,7 +49,7 @@ Damn Vulnerable Bank Android Application aims to provide an interface for everyo
 - Now we need a keystore to sign an apk
 - Create a new keystore and remember its password
 - After creating select that keystore and enter password
-- Now select Build variant as Realese and signature version as V2
+- Now select Build variant as Release and signature version as V2
 - Now we can build the apk successfully
 
 ## List of vulnerabilities in the application
@@ -79,7 +79,7 @@ To keep things crisp and interesting, we hidden this section. Do not toggle this
 - [x] Add profile and change-password routes
 - [ ] Create different secrets for admin and other users
 - [ ] Add dynamic generation of secrets to verify JWT tokens
-- [ ] Introduce bug in jwt verficiation
+- [ ] Introduce bug in jwt verification
 - [x] Find a way to store database and mount it while using docker
 - [X] Dockerize environment
 
