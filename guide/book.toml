@@ -6,4 +6,5 @@ src = "."
 title = "Damn Vulnerable Bank"
 
 [output.html]
-default-theme = "rust"
+default-theme = "navy"
+google-analytics = "UA-198321670-3"

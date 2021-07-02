@@ -1,6 +1,8 @@
 
 # Damn-Vulnerable-Bank
 
+**Guide:** https://rewanthtammana.com/damn-vulnerable-bank/
+
 ## About application
 Damn Vulnerable Bank Android Application aims to provide an interface for everyone to get a detailed understanding with internals and security aspects of android application.
 
@@ -89,6 +91,6 @@ Thanks to these amazing people
 
 |   |   |   |
 |---|---|---|
-| Rewanth Cool (Rest API)  | [Github](https://github.com/rewanth1997/)  | [LinkedIn](https://www.linkedin.com/in/rewanthcool/)  |
+| Rewanth Tammana (Rest API)  | [Github](https://github.com/rewanthtammana/)  | [LinkedIn](https://www.linkedin.com/in/rewanthtammana/)  |
 | Hrushikesh Kakade (Android App)  | [Github](https://github.com/HrushikeshK/)  | [LinkedIn](https://www.linkedin.com/in/hrushikeshkakade/)  |
 | Akshansh Jaiswal (Android App)  | [Github](https://github.com/jaiswalakshansh)  | [LinkedIn](https://www.linkedin.com/in/akshanshjaiswal/)  |
