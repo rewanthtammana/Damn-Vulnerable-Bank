@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](readme.md)
+- [Introduction](README.md)
 - [About Damn Vulnerable Bank](about.md)
 - [Tools](tools.md)
 - [Install](install.md)
