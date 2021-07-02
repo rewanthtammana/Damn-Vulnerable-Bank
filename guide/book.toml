@@ -1,0 +1,9 @@
+[book]
+authors = ["Rewanth Tammana"]
+language = "en"
+multilingual = false
+src = "."
+title = "Damn Vulnerable Bank"
+
+[output.html]
+default-theme = "rust"
