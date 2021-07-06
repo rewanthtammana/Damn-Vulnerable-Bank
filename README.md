@@ -1,7 +1,23 @@
+<h1 align="center">Damn Vulnerable Bank</h1>
 
-# Damn-Vulnerable-Bank
+<p align="center">
+  <a href="https://github.com/rewanthtammana/Damn-Vulnerable-Bank/fork">
+    <img src="https://img.shields.io/github/forks/rewanthtammana/Damn-Vulnerable-Bank">
+  </a>
+  <a href="https://github.com/rewanthtammana/Damn-Vulnerable-Bank/stargazers">
+    <img src="https://img.shields.io/github/stars/rewanthtammana/Damn-Vulnerable-Bank">
+  </a>
+  <a href="https://github.com/rewanthtammana/Damn-Vulnerable-Bank/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/rewanthtammana/Damn-Vulnerable-Bank">
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Damn%20Vulnerable%20Bank%20Guide:&url=https%3A%2F%2Fgithub.com%2Frewanthtammana%2FDamn-Vulnerable-Bank">
+    <img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Frewanthtammana%2FDamn-Vulnerable-Bank">
+  </a>
+</p>
 
-**Guide:** https://rewanthtammana.com/damn-vulnerable-bank/
+<p align="center">
+  <b>Guide:</b> https://rewanthtammana.com/damn-vulnerable-bank/
+</p>
 
 ## About application
 Damn Vulnerable Bank Android Application aims to provide an interface for everyone to get a detailed understanding with internals and security aspects of android application.
