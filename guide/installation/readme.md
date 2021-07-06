@@ -12,7 +12,7 @@ I'm using genymotion as my emulator to install the application.
 adb install dvba.apk
 ```
 
-![Install app](images/install-app.png)
+![Install app](../images/install-app.png)
 
 Application installed successfully.
 
@@ -20,6 +20,6 @@ Application installed successfully.
 
 Try running the application. It doesn't work.
 
-![App crashed](images/app-crash.png)
+![App crashed](../images/app-crash.png)
 
 Looks like the app isn't built to work in an emulator. Let's fix it :-)

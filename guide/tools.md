@@ -52,4 +52,8 @@ If you are getting any different output, possible reasons are frida server might
 
 ## Install docker and start backend server
 
+TBD
+
 ## Install and configure burpsuite with emulator
+
+TBD

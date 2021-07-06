@@ -6,11 +6,11 @@ Look into the code for traces of frida to find the piece of code that looks for 
 grep -r -i frida
 ```
 
-![Frida find library](../images/frida-find-library.png)
+![Frida find library](../../images/frida-find-library.png)
 
 We can see from the above image, there is a `lib/` folder and `System.loadLibrary((String)"frida-check")`. This means the application is calling a method written in native code to perform the method hooking/frida check. Let's open the `lib/` folder to see what it is having. Since we are using genymotion and it runs on `x86` architecture, let's check that directory. We can see some `*.so` files and they are executable files.
 
-![x86 genymotion](../images/x86-genymotion.png)
+![x86 genymotion](../../images/x86-genymotion.png)
 
 Our target is to analyze these library files. To analyze these library files, you will need a tool like IDA/ghidra. Let's use ghidra because it has support to multiple architectures with free of cost.
 
@@ -18,11 +18,11 @@ Our target is to analyze these library files. To analyze these library files, yo
 
 Drag and drop the `libfrida-check.so` file to ghidra, select all the default options, and once its loaded double click on the file name to open ghidra. 
 
-![ghidra drag and drop](../images/ghidra-drag-drop.png)
+![ghidra drag and drop](../../images/ghidra-drag-drop.png)
 
 This isn't a full strech course on binary analysis, so we skip the basics and try to get started with the analysis.
 
-![ghidra analysis](../images/ghidra-analysis.png)
+![ghidra analysis](../../images/ghidra-analysis.png)
 
 You can see the pseudo code of the `fridaCheck` function on the right side. In line 20, we can see a socket connection. The application is trying to connect to particular port and depending on the status, its returning some value. In order to perform socket connection, it requires a `host` and `port` value and we can see in line 20, its utilizing data in `local_28` which is `0xa2690002`.
 
@@ -48,6 +48,6 @@ emulator$ ./frida-server-14.2.18-android-x86 -l 0.0.0.0:1337
 ubuntu$ frida -H $DEVICE_IP:1337 -f com.app.damnvulnerablebank -l scripts/script.js 
 ```
 
-![Frida bypass](../images/frida-check-bypass.png)
+![Frida bypass](../../images/frida-check-bypass.png)
 
 You can see from the above image, even when we are hooking the application with frida, it still says `frida is not running`. We bypassed both frida detection and root detection checks.

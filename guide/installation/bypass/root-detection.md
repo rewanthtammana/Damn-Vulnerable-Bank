@@ -34,6 +34,6 @@ Run the frida command to check it
 frida -U -f com.app.damnvulnerablebank -l scripts/script.js 
 ```
 
-![Frida detected](../images/frida-detected.png)
+![Frida detected](../../images/frida-detected.png)
 
 We can see an error message after application crashed, `Frida is running`. This confirms the application is having another check to detect if we are trying to hook the application and tamper with it. If we are trying to hook it, the application crashes. Our target is to bypass this method hooking detection check.
