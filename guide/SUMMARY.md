@@ -17,4 +17,4 @@
     - [Exported activities](exploits/exploit-3.md)
     - [Webview via deeplink](exploits/exploit-4.md)
 - [Contribute](CONTRIBUTION.md)
-<!-- - [Additional Resources](additional-resources.md) -->
+- [Additional Resources](additional-resources.md)
