@@ -6,7 +6,6 @@
 
 ## Damn Vulnerable Bank Guide Outline
 
-- [Introduction](README.md)
 - [About Damn Vulnerable Bank](about.md)
 - [Tools](tools.md)
 - [Installation](installation/readme.md)
