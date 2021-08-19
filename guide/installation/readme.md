@@ -25,14 +25,16 @@ Try running the application. It doesn't work.
 Looks like the app isn't built to work in an emulator. Let's fix it :-)
 
 
-### Issues while reversing (recompiling) the application. 
+### Issues while reversing (recompiling) the application with apktool
 
-There can be times when you can face errors pertaining to apktool and not this application. 
-One of the error is related to `brut.common.BrutException`
+Depending on the apktool version, you might face some errors recompiling the application. One of such error is `brut.common.BrutException`
+
 ![Exception Image](../images/dvba-brut.png)
 
-In order to solve the error, one can follow below mentioned command (which successfully solved the issue at my end). 
- ``` apktool empty-framework-dir --force 
-     apktool b dvba/ -o dvba-no-gpu.apk
+In order to solve the error, one can follow below mentioned command (which successfully solved the issue at my end).
+
+ ```bash
+ apktool empty-framework-dir --force 
+ apktool b dvba/ -o dvba-no-gpu.apk
  ```
 
