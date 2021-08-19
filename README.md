@@ -74,12 +74,8 @@ To keep things crisp and interesting, we hidden this section. Do not toggle this
 - [x] Find a way to store database and mount it while using docker
 - [X] Dockerize environment
 
-## Authors
+## Contributors
 
-Thanks to these amazing people
-
-|   |   |   |
-|---|---|---|
-| Rewanth Tammana (Rest API)  | [Github](https://github.com/rewanthtammana/)  | [LinkedIn](https://www.linkedin.com/in/rewanthtammana/)  |
-| Akshansh Jaiswal (Android App)  | [Github](https://github.com/jaiswalakshansh)  | [LinkedIn](https://www.linkedin.com/in/akshanshjaiswal/)  |
-| Hrushikesh Kakade (Android App & Containerization)  | [Github](https://github.com/HrushikeshK/)  | [LinkedIn](https://www.linkedin.com/in/hrushikeshkakade/)  |
+<a href = "https://github.com/rewanthtammana/damn-vulnerable-bank/contributors">
+  <img src = "https://contrib.rocks/image?repo=rewanthtammana/damn-vulnerable-bank"/>
+</a>
