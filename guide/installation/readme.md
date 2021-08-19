@@ -27,11 +27,11 @@ Looks like the app isn't built to work in an emulator. Let's fix it :-)
 
 ### Issues while reversing (recompiling) the application with apktool
 
-Depending on the apktool version, you might face some errors recompiling the application. One of such error is `brut.common.BrutException`
+Depending on the apktool version, you might face an error recompiling the application. One of such error is `brut.common.BrutException`
 
 ![Exception Image](../images/dvba-brut.png)
 
-In order to solve the error, one can follow below mentioned command (which successfully solved the issue at my end).
+The following commands can fix the error.
 
  ```bash
  apktool empty-framework-dir --force 
