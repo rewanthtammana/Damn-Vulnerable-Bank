@@ -16,14 +16,25 @@
 </p>
 
 <p align="center">
-  <b>Guide:</b> https://rewanthtammana.com/damn-vulnerable-bank/
+  <b>Guide: https://rewanthtammana.com/damn-vulnerable-bank/</b>
 </p>
 
 ## About application
-[Damn Vulnerable Bank](https://github.com/rewanthtammana/Damn-Vulnerable-Bank) is designed to be an intentionally vulnerable android application. Numerous resources are available on the internet to get started with android application security. This application provides an interface to assess the security knowledge you gained over time. There are multiple vulnerabilities in the application and we documented all of them in this [guide](https://rewanthtammana.com/damn-vulnerable-bank/). Take your own sweet time to explore the application and detect all the vulnerabilities.
+[Damn Vulnerable Bank](https://github.com/rewanthtammana/Damn-Vulnerable-Bank) is designed to be an intentionally vulnerable android application. All the details are documented in the guide, [here](https://rewanthtammana.com/damn-vulnerable-bank/).
 
+![Guide overview](./images/damn-vulnerable-bank-guide.png)
 
-<img src="https://github.com/rewanth1997/Damn-Vulnerable-Bank/blob/master/images/screen1.jpg" align="centre" height="600" width="395"><img src="https://github.com/rewanth1997/Damn-Vulnerable-Bank/blob/master/images/screen2.jpg" align="centre" height="600" width="395">
+<!-- <img src="https://github.com/rewanthtammana/Damn-Vulnerable-Bank/blob/master/images/screen1.jpg" align="centre" height="600" width="395"><img src="https://github.com/rewanthtammana/Damn-Vulnerable-Bank/blob/master/images/screen2.jpg" align="centre" height="600" width="395"> -->
+
+## Upcoming Sessions
+
+### NoNameCon
+
+* [https://cfp.nonamecon.org/nnc2021/talk/WCKLTN/](https://cfp.nonamecon.org/nnc2021/talk/WCKLTN/)
+
+### Black Hat Europe
+
+* [TBD](https://www.blackhat.com/eu-21/)
 
 ## Features
 - [x] Sign up
@@ -73,6 +84,12 @@ To keep things crisp and interesting, we hidden this section. Do not toggle this
 - [ ] Introduce bug in jwt verification
 - [x] Find a way to store database and mount it while using docker
 - [X] Dockerize environment
+
+## Core Team
+
+[Damn Vulnerable Bank](https://rewanthtammana.com/damn-vulnerable-bank/) was created by [Rewanth Tammana](https://rewanthtammana.com), [Akshansh Jaiswal](https://akshanshjaiswal.com/) & [Hrushikesh Kakade](https://hkh4cks.com/)
+
+Read more, [here](https://rewanthtammana.com/damn-vulnerable-bank/authors.html).
 
 ## Contributors
 
