@@ -1,7 +1,8 @@
 # Summary
 
 - [Introduction](README.md)
-- [About Damn Vulnerable Bank](about.md)
+- [Authors](authors.md)
+<!-- - [About Damn Vulnerable Bank](about.md) -->
 - [Tools](tools.md)
 - [Installation](installation/readme.md)
     - [Bypass](installation/bypass/readme.md)
