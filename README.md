@@ -87,7 +87,14 @@ To keep things crisp and interesting, we hidden this section. Do not toggle this
 
 ## Core Team
 
-[Damn Vulnerable Bank](https://rewanthtammana.com/damn-vulnerable-bank/) was created by [Rewanth Tammana](https://rewanthtammana.com), [Akshansh Jaiswal](https://akshanshjaiswal.com/) & [Hrushikesh Kakade](https://hkh4cks.com/)
+[Damn Vulnerable Bank](https://rewanthtammana.com/damn-vulnerable-bank/) was created by 
+
+|   |   |   |
+|---|---|---|
+| Rewanth Cool (Rest API)  | [Github](https://github.com/rewanth1997/)  | [LinkedIn](https://www.linkedin.com/in/rewanthcool/)  |
+| Akshansh Jaiswal (Android App)  | [Github](https://github.com/jaiswalakshansh)  | [LinkedIn](https://www.linkedin.com/in/akshanshjaiswal/)  |
+| Hrushikesh Kakade (Android App)  | [Github](https://github.com/HrushikeshK/)  | [LinkedIn](https://www.linkedin.com/in/hrushikeshkakade/)  |
+
 
 Read more, [here](https://rewanthtammana.com/damn-vulnerable-bank/authors.html).
 
