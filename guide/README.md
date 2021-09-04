@@ -1,5 +1,5 @@
 <meta property='twitter:title' content="Damn Vulnerable Bank Guide"/>
-<meta property='twitter:image' content="https://rewanthtammana.com/damn-vulnerable-bank/images/ui.jpg"/>
+<meta property='twitter:image' content="https://raw.githubusercontent.com/rewanthtammana/Damn-Vulnerable-Bank/master/images/damn-vulnerable-bank-guide.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
 ## About Damn Vulnerable Bank
