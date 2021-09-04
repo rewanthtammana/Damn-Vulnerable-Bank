@@ -49,7 +49,7 @@
   - [x] Via manual entry
   - [ ] Via QR scan
 - [x] Add beneficiary
-- [ ] Delete beneficiary
+- [x] Delete beneficiary
 - [x] View beneficiary
 - [x] View transactions history
 - [ ] Download transactions history
