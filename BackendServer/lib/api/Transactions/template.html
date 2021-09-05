@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Transactions List</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Transactions List</h1>
+
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Account Number</th>
+      <th>Balance</th>
+      <th>Is Admin</th>
+    </tr>
+    <tr>
+      <th>{{user.username}}</th>
+      <th>{{user.account_number}}</th>
+      <th>{{user.balance}}</th>
+      <th>{{user.is_admin}}</th>
+    </tr>
+  </table>
+
+  <br />
+  <br />
+
+  <table>
+    <tr>
+      <th>From Account</th>
+      <th>To Account</th>
+      <th>Amount</th>
+    </tr>
+    {{#each transactions}}
+    <tr>
+      <th>{{this.from_account}}</th>
+      <th>{{this.to_account}}</th>
+      <th>{{this.amount}}</th>
+    </tr>
+    {{/each}}
+  </table>
+</body>
+
+</html>

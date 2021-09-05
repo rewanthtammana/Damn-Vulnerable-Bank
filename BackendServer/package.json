@@ -7,7 +7,7 @@
     "start": "node ./bin/www"
   },
   "keywords": [],
-  "author": "Rewanth Cool",
+  "author": "Rewanth Tammana",
   "license": "ISC",
   "dependencies": {
     "debug": "~2.2.0",
@@ -15,10 +15,11 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.1",
     "pm2": "^2.1.6",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "pdf-creator-node": "^2.2.4"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rewanth1997/Damn-Vulnerable-Bank"
+    "url": "https://github.com/rewanthtammana/Damn-Vulnerable-Bank"
   }
 }
