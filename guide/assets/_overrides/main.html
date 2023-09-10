@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<!-- Define & set title -->
+{% set title = config.site_name %}
+{% if page and page.title and not page.is_homepage %}
+{% set title = config.site_name ~ " - " ~ page.title | striptags %}
+{% endif %}
+
+<!-- Set assets url -->
+{% set assets = config.site_url ~ 'assets' %}
+
+<!-- Set extra meta headers block -->
+{% block extrahead %}
+<meta name="application-name" content="{{ config.site_name }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ config.site_description }}">
+<meta property="og:url" content="{{ page.canonical_url }}">
+<meta property="og:image" content="{{ assets }}/images/rewanthtammana-damn-vulnerable-bank-preview.png">
+<meta property="og:image:alt" content="{{ config.site_name }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@rewanthtammana">
+<meta name="twitter:creator" content="@rewanthtammana">
+<meta name="twitter:text:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ config.site_description }}">
+<meta name="twitter:image" content="{{ assets }}/images/rewanthtammana-damn-vulnerable-bank-preview.png">
+<meta name="google-site-verification" content="{{ config.extra.analytics.property }}">
+{% endblock %}
+
+<!-- Set announcement block -->
+{% block announce %}
+<div class="custom_block_announcement">
+    <a target="_blank" href="https://github.com/rewanthtammana/damn-vulnerable-bank">
+    If you <img alt="❤" class="twemoji md-footer-custom-text" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg" title="love"> this project, give it a <strong>⭐️</strong> on <strong>GitHub</strong>
+    </a>
+</div>
+{% endblock %}

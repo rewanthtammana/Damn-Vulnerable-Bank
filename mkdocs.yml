@@ -1,0 +1,101 @@
+site_name: Damn Vulnerable Bank
+site_description: >-
+  Damn Vulnerable Bank is designed to be an intentionally vulnerable android application. This provides an interface to assess your android application security hacking skills.
+site_author: Rewanth Tammana
+site_url: https://rewanthtammana.com/damn-vulnerable-bank/
+docs_dir: guide
+edit_uri: edit/main/guide
+
+repo_name: rewanthtammana/damn-vulnerable-bank
+repo_url: https://github.com/rewanthtammana/damn-vulnerable-bank
+
+copyright: Copyright &copy; 2023 - Rewanth Tammana
+
+extra_css:
+  - assets/css/style.css
+
+extra:
+  analytics:
+    provider: google
+    property: UA-198321670-1
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/rewanthtammana/damn-vulnerable-bank
+    - icon: fontawesome/brands/keybase
+      link: https://keybase.io/rewanthtammana
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/rewanthtammana
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/rewanthtammana
+    - icon: fontawesome/brands/github
+      link: https://github.com/rewanthtammana
+
+theme:
+  name: material
+  custom_dir: 'guide/assets/_overrides'
+  features:
+    - content.code.annotate
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.integrate
+    - toc.follow
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: yellow
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  include_search_page: false
+  search_index_only: true
+
+plugins:
+  - exclude:
+      glob:
+        - "_overrides/*"
+  - git-revision-date-localized:
+      type: iso_datetime
+      enable_creation_date: true
+  - minify:
+      minify_html: true
+  - search:
+      lang:
+        - en
+
+nav:
+  - Introduction: index.md
+  - Authors: authors.md
+  - Tools: tools.md
+  - Installation:
+    - Installation: installation/index.md
+    - Bypass Techniques:
+      - Bypass Techniques: installation/bypass/index.md
+      - GPU detection: installation/bypass/gpu-detection.md
+      - Root Detection: installation/bypass/root-detection.md
+      - Frida detection with Ghidra: installation/bypass/frida-detection-with-ghidra.md
+  - Footprinting:
+    - Footprinting: footprinting/index.md
+    - Decrypting response: footprinting/decrypt-response.md
+    - Recreating crypto functions: footprinting/crypto.md
+  - Exploits:
+    - Exploits: exploits/index.md
+    - REST API vulnerabilities: exploits/exploit-1.md
+    - Sensitive Information Disclosure: exploits/exploit-2.md
+    - Exported activities: exploits/exploit-3.md
+    - Webview via deeplink: exploits/exploit-4.md
+  - Contribute: contribution.md
+  - Additional Resources: additional-resources.md

@@ -24,3 +24,5 @@ hs_err_pid*
 
 # node modules
 node_modules/
+# Local Netlify folder
+.netlify
