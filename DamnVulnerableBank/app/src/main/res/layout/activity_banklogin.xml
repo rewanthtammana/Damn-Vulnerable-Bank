@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:padding="30dp"
-    android:background="@color/kuchbhiblue"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -17,79 +17,62 @@
 
 
         <ImageView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:background="@color/blue"
-            android:src="@drawable/bn" />
-
-        <TextView
-            android:id="@+id/tet"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/muli_extrabold"
-            android:text="@string/welcome"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="35sp" />
-
+            android:layout_marginTop="20dp"
+            android:src="@drawable/sukybank" />
 
         <LinearLayout
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp">
+            android:layout_marginTop="35dp"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/login1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:textColor="@color/white"
-                android:background="@drawable/circle"
+                android:background="@drawable/share_round_popup"
                 android:onClick="loginPage"
-                android:text="Login" />
+                android:text="로그인" />
 
             <Button
                 android:id="@+id/signup1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/circle"
+                android:background="@drawable/share_round_popup"
                 android:onClick="signupPage"
-                android:text="Signup" />
-
-
+                android:text="회원가입" />
 
         </LinearLayout>
-
-
 
 
         <EditText
             android:id="@+id/apiurl"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:hint="API URL  e.g http://127.0.0.1:8000" />
+            android:background="@drawable/banklogin_healthcheck"
+            android:hint="API URL  e.g http://192.168.0.121:3000"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/healthc"
-            android:layout_width="98dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:background="@drawable/circle"
+            android:background="@drawable/share_round_popup"
             android:onClick="healthCheck"
-            android:text="Health Check"
-            android:textColor="@color/white" />
+            android:text="Health Check" />
 
 
     </LinearLayout>
