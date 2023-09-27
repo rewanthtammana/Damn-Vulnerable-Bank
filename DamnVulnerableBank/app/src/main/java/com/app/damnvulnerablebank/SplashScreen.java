@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 애니메이션~^^
 
 import androidx.appcompat.app.AppCompatActivity;
 

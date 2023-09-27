@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 화면 전환
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

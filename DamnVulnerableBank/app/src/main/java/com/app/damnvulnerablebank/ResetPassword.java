@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 비밀번호 재설정
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -96,3 +97,4 @@ public class ResetPassword extends AppCompatActivity {
     }
     }
 }
+

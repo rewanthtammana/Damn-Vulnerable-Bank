@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 은행 뭐쓴다..
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,10 +31,12 @@ public class RegisterBank extends AppCompatActivity {
     }
     public void register(View view)
     {
-        EditText inputEmail=findViewById(R.id.signupemail_editText);
+        EditText inputEmail=findViewById(R.id.signup_email_editText);
+        EditText inputUsername=findViewById(R.id.signup_username_editText);
         EditText inputPassword=findViewById(R.id.signup_password_editText);
 
         String email = inputEmail.getText().toString().trim();
+        String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
 
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
@@ -46,7 +49,8 @@ public class RegisterBank extends AppCompatActivity {
         JSONObject requestDataEncrypted = new JSONObject();
         try {
             //input your API parameters
-            requestData.put("username", email);
+            requestData.put("email", email);
+            requestData.put("username", username);
             requestData.put("password", password);
 
             // Encrypt data before sending

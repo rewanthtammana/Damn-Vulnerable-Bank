@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 수신 계좌 목록을 표시하고, 각 목록 항목에 대한 클릭 이벤트를 처리
 
 import android.content.Context;
 import android.view.LayoutInflater;

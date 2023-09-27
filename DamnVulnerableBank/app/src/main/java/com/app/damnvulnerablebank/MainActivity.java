@@ -74,15 +74,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Check frida
 
-        if(fridaCheck.fridaCheck() == 1) {
-            Toast.makeText(getApplicationContext(), "Frida is running", Toast.LENGTH_SHORT).show();
-            Log.d("FRIDA CHECK", "FRIDA Server DETECTED");
-
-            finish();
-        } else {
-            Log.d("FRIDA CHECK", "FRIDA Server NOT RUNNING");
-            Toast.makeText(getApplicationContext(), "Frida is NOT running", Toast.LENGTH_SHORT).show();
-        }
+//        if(fridaCheck.fridaCheck() == 1) {
+//            Toast.makeText(getApplicationContext(), "Frida is running", Toast.LENGTH_SHORT).show();
+//            Log.d("FRIDA CHECK", "FRIDA Server DETECTED");
+//
+//            finish();
+//        } else {
+//            Log.d("FRIDA CHECK", "FRIDA Server NOT RUNNING");
+//            Toast.makeText(getApplicationContext(), "Frida is NOT running", Toast.LENGTH_SHORT).show();
+//        }
 
 
 

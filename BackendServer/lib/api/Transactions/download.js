@@ -1,3 +1,5 @@
+// 거래 데이터를 pdf 문서로 다운로드할 수 있게
+
 var express = require('express');
 var pdf = require("pdf-creator-node");
 var fs = require("fs");

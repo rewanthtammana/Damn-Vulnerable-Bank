@@ -1,3 +1,5 @@
+// 최종 결과물
+
 var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');

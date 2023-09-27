@@ -1,3 +1,5 @@
+// add에서 추가했을 때 승인
+
 var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');

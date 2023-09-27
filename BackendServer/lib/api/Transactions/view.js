@@ -1,3 +1,5 @@
+// 트랜젝션 조회
+
 var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');

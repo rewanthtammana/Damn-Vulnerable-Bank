@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 암호화
 
 import android.util.Base64;
 
@@ -19,6 +20,7 @@ public class EncryptDecrypt {
     }
 
     public static String encrypt(String input) {
+        // base64
         String encVal = operate(input);
         String val = Base64.encodeToString(encVal.getBytes(),0);
 
@@ -26,6 +28,7 @@ public class EncryptDecrypt {
     }
 
     public static String decrypt(String input) {
+        // 디코딩 byte
         byte[] decodeByte = Base64.decode(input,0);
         String decodeString = new String(decodeByte);
         String decryptString = operate(decodeString);

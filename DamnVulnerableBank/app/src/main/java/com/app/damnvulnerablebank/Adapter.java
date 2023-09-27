@@ -1,5 +1,6 @@
 package com.app.damnvulnerablebank;
 
+// 데이터 동적 표시 및 관리
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

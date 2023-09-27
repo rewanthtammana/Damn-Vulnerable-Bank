@@ -1,3 +1,6 @@
+// 자금 이체
+// 오류 상태 코드가 많음
+
 var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');

@@ -1,3 +1,5 @@
+// 사용자 비밀번호 변경
+
 var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');
@@ -15,8 +17,11 @@ var { encryptResponse, decryptRequest } = require("../../../middlewares/crypt");
  * @param new_password               - New password
  * @return                           - Status
  */
+// /api/user/change-password 경로
 router.post('/', [validateUserToken, decryptRequest], (req, res) => {
     var r = new Response();
+    // 사용자의 현재 비밀번호와 계정 번호를 기반으로 사용자 정보를 조회
+    // 현재 비밀번호와 새로운 비밀번호를 비교하여 처리
     let current_password = req.body.password;
     let new_password = req.body.new_password;
     Model.users.findOne({

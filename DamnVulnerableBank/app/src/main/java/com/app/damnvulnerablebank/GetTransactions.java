@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 거래 목록(내역) 사용자에게 보여줌
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

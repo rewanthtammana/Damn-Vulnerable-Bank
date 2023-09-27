@@ -1,3 +1,4 @@
+// 라우팅 설정
 var express = require('express');
 var router = express.Router();
 

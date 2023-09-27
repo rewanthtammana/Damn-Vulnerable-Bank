@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 송금 Activity
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

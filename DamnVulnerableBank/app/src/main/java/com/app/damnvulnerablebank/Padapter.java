@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// recycle 뷰
 
 import android.content.Context;
 import android.view.LayoutInflater;

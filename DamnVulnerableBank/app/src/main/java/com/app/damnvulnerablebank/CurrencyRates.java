@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 환율 정보 보여주는 Activity
 
 import androidx.appcompat.app.AppCompatActivity;
 

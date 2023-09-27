@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 클래스 정의
 
 public class BeneficiaryRecords {
     private String benificiaryaccnt;

@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 루팅 탐지
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

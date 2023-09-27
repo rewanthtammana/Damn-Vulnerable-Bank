@@ -36,8 +36,37 @@
             android:orientation="vertical"
             android:layout_marginTop="50dp">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/signup_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/signup_back"
+                android:hint="Enter email"
+                android:textColorHint="#000000"
+                app:boxStrokeColor="#000000"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="#000000"
+                app:hintTextColor="#000000"
+                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                app:startIconTint="#000000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_email_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000000"
+                    android:textCursorDrawable="@null" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_username"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -53,11 +82,11 @@
                 app:startIconTint="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signupemail_editText"
+                    android:id="@+id/signup_username_editText"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:fontFamily="@font/muli_extrabold"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:textColor="#000000"
                     android:textCursorDrawable="@null" />
 

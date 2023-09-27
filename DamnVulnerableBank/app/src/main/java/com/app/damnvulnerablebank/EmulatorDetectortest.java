@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 디바이스가 애뮬레이터인지 확인(숫자가 3 넘으면 애뮬레이터)
 
 import android.os.Build;
 import android.os.Environment;

@@ -1,4 +1,5 @@
 package com.app.damnvulnerablebank;
+// 잔액 확인
 
 import androidx.appcompat.app.AppCompatActivity;
 

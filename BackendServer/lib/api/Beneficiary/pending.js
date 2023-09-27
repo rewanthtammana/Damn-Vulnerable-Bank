@@ -1,3 +1,5 @@
+// 관리자 승인 후 전송
+
 var express = require('express');
 var router = express.Router();
 var Model = require('../../../models/index');
