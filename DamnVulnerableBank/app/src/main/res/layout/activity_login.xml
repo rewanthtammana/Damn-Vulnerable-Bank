@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFD6D6"
     android:padding="30dp"
     tools:context=".BankLogin">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,29 +15,42 @@
 
         <ImageView
             android:id="@+id/login_back"
-            android:onClick="backToMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="backToMain"
             android:padding="5dp"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
-        <TextView
-            android:id="@+id/log"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/muli_extrabold"
-            android:text="Login"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="40sp" />
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/sukybank" />
+
+            <TextView
+                android:id="@+id/log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/muli_extrabold"
+                android:text="로그인"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="40sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_phone_number"
@@ -43,14 +58,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/login_back"
-                android:hint="Enter Username"
+                android:hint="아이디를 입력해주세요"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
                 app:endIconTint="#000000"
                 app:hintTextColor="#000000"
-                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                app:startIconDrawable="@drawable/ic_username_24"
                 app:startIconTint="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -60,9 +75,11 @@
                     android:fontFamily="@font/muli_extrabold"
                     android:inputType="textEmailAddress"
                     android:textColor="#000000"
-                    android:textCursorDrawable="@null" />
+                    android:textCursorDrawable="@null"
+                    android:background="@drawable/input_white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <RelativeLayout
                 android:id="@+id/relp"
                 android:layout_width="wrap_content"
@@ -70,24 +87,25 @@
                 android:layout_marginLeft="150dp"
                 android:background="@drawable/whitecircle"
                 android:elevation="8dp"
-                android:visibility="gone"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:visibility="gone">
 
                 <ProgressBar
                     android:id="@+id/progressb"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:visibility="gone"
                     android:layout_centerInParent="true"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:visibility="gone" />
             </RelativeLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/login_back"
-                android:hint="Enter Password"
+                android:hint="패스워드를 입력해주세요"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
@@ -104,7 +122,8 @@
                     android:fontFamily="@font/muli_extrabold"
                     android:inputType="textPassword"
                     android:textColor="#000000"
-                    android:textCursorDrawable="@null" />
+                    android:textCursorDrawable="@null"
+                    android:background="@drawable/input_white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,14 +134,12 @@
             android:id="@+id/loginbttn"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/circle"
-            android:layout_marginTop="30dp"
-            android:text="Login"
-            android:onClick="bankLogin"
             android:layout_gravity="center"
-            android:textColor="#FFFFFF"/>
-
-
+            android:layout_marginTop="30dp"
+            android:background="@drawable/share_round_popup"
+            android:onClick="bankLogin"
+            android:text="로그인"
+            android:textSize="25sp"/>
 
 
     </LinearLayout>

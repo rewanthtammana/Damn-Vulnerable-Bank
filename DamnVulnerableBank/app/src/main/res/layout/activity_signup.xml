@@ -71,7 +71,7 @@
                     android:inputType="text"
                     android:textColor="#000000"
                     android:textCursorDrawable="@null"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/input_white"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -82,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/signup_back"
+                android:layout_marginTop="10dp"
                 android:hint="비밀번호를 입력해주세요"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
@@ -100,7 +101,7 @@
                     android:inputType="textPassword"
                     android:textColor="#000000"
                     android:textCursorDrawable="@null"
-                    android:background="#FFFFFF"/>
+                    android:background="@drawable/input_white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +112,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/signup_back"
                 android:hint="이메일을 입력해주세요"
+                android:layout_marginTop="10dp"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
@@ -128,7 +130,7 @@
                     android:inputType="textEmailAddress"
                     android:textColor="#000000"
                     android:textCursorDrawable="@null"
-                    android:background="#FFFFFF"/>
+                    android:background="@drawable/input_white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
