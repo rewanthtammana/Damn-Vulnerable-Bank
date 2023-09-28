@@ -31,5 +31,5 @@
         android:gravity="center"
         android:visibility="gone"
         android:textSize="30sp"
-        android:text="You have no active benificiaries to show" />
+        android:text="계좌 정보가 존재하지 않습니다" />
 </LinearLayout>
