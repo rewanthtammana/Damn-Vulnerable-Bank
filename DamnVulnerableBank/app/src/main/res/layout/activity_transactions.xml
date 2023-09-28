@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetTransactions">
+    tools:context=".GetTransactions"
+    android:background="@color/bg_pink">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transt"
@@ -17,6 +18,6 @@
         android:gravity="center"
         android:visibility="gone"
         android:textSize="30sp"
-        android:text="You have no record to show" />
+        android:text="보여드릴 기록이 없습니다" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
