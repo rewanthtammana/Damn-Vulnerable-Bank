@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PendingBeneficiary">
+    tools:context=".PendingBeneficiary"
+    android:background="@color/bg_pink">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pendb"
@@ -18,5 +19,5 @@
         android:gravity="center"
         android:visibility="gone"
         android:textSize="30sp"
-        android:text="Requires Admin access or currently no records to show" />
+        android:text="관리자 권한이 필요하거나 표시할 레코드가 현재 없습니다" />
 </androidx.constraintlayout.widget.ConstraintLayout>
