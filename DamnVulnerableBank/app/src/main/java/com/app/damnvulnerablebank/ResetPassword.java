@@ -33,6 +33,12 @@ public class ResetPassword extends AppCompatActivity {
         setContentView(R.layout.activity_passreset);
     }
 
+    public void backToMain(View view){
+        // "Back" 버튼을 클릭하면 호출되는 메서드
+        // MainActivity로 이동
+        Intent into =new Intent(ResetPassword.this, Dashboard.class);
+        startActivity(into);
+    }
     public void resetPassword(View view) {
         EditText oldPass = findViewById(R.id.oldlogin_password_editText);
         EditText newPass = findViewById(R.id.newlogin_password_editText);

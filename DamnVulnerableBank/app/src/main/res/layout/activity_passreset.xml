@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    tools:context=".ResetPassword">
+    tools:context=".ResetPassword"
+    android:background="@color/bg_pink">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/muli_extrabold"
-        android:text="Password Reset"
+        android:text="패스워드 변경"
         android:layout_marginLeft="10dp"
         android:textAllCaps="true"
         android:textColor="#000000"
@@ -43,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/login_back"
-            android:hint="Enter Old Password"
+            android:hint="현재 비밀번호"
             android:textColorHint="#000000"
             app:boxStrokeColor="#000000"
             app:boxStrokeWidthFocused="2dp"
@@ -60,7 +61,8 @@
                 android:fontFamily="@font/muli_extrabold"
                 android:inputType="textPassword"
                 android:textColor="#000000"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@drawable/input_white"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/login_back"
-            android:hint="Enter New Password"
+            android:hint="새 비밀번호"
             android:textColorHint="#000000"
             app:boxStrokeColor="#000000"
             app:boxStrokeWidthFocused="2dp"
@@ -78,7 +80,8 @@
             app:endIconTint="#000000"
             app:hintTextColor="#000000"
             app:startIconDrawable="@android:drawable/ic_lock_lock"
-            app:startIconTint="#000000">
+            app:startIconTint="#000000"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/newlogin_password_editText"
@@ -87,7 +90,8 @@
                 android:fontFamily="@font/muli_extrabold"
                 android:inputType="textPassword"
                 android:textColor="#000000"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@drawable/input_white"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/login_back"
-            android:hint="Enter Password Again"
+            android:hint="새 비밀번호(확인)"
             android:textColorHint="#000000"
             app:boxStrokeColor="#000000"
             app:boxStrokeWidthFocused="2dp"
@@ -114,7 +118,8 @@
                 android:fontFamily="@font/muli_extrabold"
                 android:inputType="textPassword"
                 android:textColor="#000000"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@drawable/input_white"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -124,12 +129,13 @@
             android:id="@+id/reset"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/circle"
+            android:background="@drawable/share_round_popup"
             android:layout_marginTop="30dp"
-            android:text="Login"
+            android:text="비밀번호 변경"
             android:onClick="resetPassword"
             android:layout_gravity="center"
-            android:textColor="#FFFFFF"/>
+            android:textStyle="bold"
+            android:textColor="#000000"/>
     </LinearLayout>
 
 </ScrollView>
