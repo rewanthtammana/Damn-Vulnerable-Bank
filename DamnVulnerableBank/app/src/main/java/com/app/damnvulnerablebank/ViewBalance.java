@@ -58,7 +58,7 @@ public class ViewBalance extends AppCompatActivity {
                             JSONObject obj = decryptedResponse.getJSONObject("data");
                             String accountid=obj.getString("account_number");
                             String balance =obj.getString("balance");
-                            tv.setText("Your Balance is $" + balance);
+                            tv.setText(balance + "원");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
