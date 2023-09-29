@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFD6D6">
+
+    <TextView
+        android:id="@+id/qna_write_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="61dp"
+        android:text="QnA 작성"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="287dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title_write"
+        tools:layout_editor_absoluteY="132dp" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="353dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <Button
+        android:id="@+id/qna_write_btn"
+        android:layout_width="80dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:text="글작성"
+        android:background="@drawable/share_round_popup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="46dp"
+        android:text="제목"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qna_write_title" />
+
+    <EditText
+        android:id="@+id/edit_title"
+        android:layout_width="297dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title_write"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Button
+        android:id="@+id/fileIn_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="첨부파일"
+        android:background="@drawable/share_round_popup"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/files_write"
+        android:layout_width="292dp"
+        android:layout_height="54dp"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="255dp" />
+
+    <TextView
+        android:id="@+id/content_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내용"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="328dp" />
+
+    <EditText
+        android:id="@+id/edit_content"
+        android:layout_width="348dp"
+        android:layout_height="329dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/boxline"
+        android:backgroundTint="#FFFFFF"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="366dp" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="380dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
