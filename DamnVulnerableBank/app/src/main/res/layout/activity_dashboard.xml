@@ -397,7 +397,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:onClick="myprofile"
+                    android:onClick="viewQuestionAndAnswer"
                     android:orientation="vertical"
                     android:padding="16dp">
 

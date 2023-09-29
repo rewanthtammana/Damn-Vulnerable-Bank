@@ -66,8 +66,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void viewQuestionAndAnswer(View v) {
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
-//        startActivity(new Intent(getApplicationContext(), QuestionAndAnswer.class));
+        startActivity(new Intent(getApplicationContext(), QnAView.class));
     }
 
     @Override
