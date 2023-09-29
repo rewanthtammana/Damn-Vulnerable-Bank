@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    tools:context=".RegisterBank">
+    tools:context=".RegisterBank"
+    android:background="@color/bg_pink">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,66 +20,47 @@
             android:padding="5dp"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/muli_extrabold"
-            android:text="Signup"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="40sp" />
-
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="176dp"
+                android:layout_height="156dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/sukybank" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/muli_extrabold"
+                android:text="회원가입"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="40sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="50dp">
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signup_email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/signup_back"
-                android:hint="Enter email"
-                android:textColorHint="#000000"
-                app:boxStrokeColor="#000000"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconMode="clear_text"
-                app:endIconTint="#000000"
-                app:hintTextColor="#000000"
-                app:startIconDrawable="@android:drawable/ic_dialog_email"
-                app:startIconTint="#000000">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_email_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:fontFamily="@font/muli_extrabold"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#000000"
-                    android:textCursorDrawable="@null" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_marginTop="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/signup_username"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/signup_back"
-                android:hint="Enter Username"
+                android:hint="사용자명을 입력해주세요"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
                 app:endIconTint="#000000"
                 app:hintTextColor="#000000"
-                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                app:startIconDrawable="@drawable/ic_person_add_24"
                 app:startIconTint="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -88,7 +70,9 @@
                     android:fontFamily="@font/muli_extrabold"
                     android:inputType="text"
                     android:textColor="#000000"
-                    android:textCursorDrawable="@null" />
+                    android:textCursorDrawable="@null"
+                    android:background="@drawable/input_white"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,7 +82,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/signup_back"
-                android:hint="Enter Password"
+                android:layout_marginTop="10dp"
+                android:hint="비밀번호를 입력해주세요"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
@@ -115,10 +100,39 @@
                     android:fontFamily="@font/muli_extrabold"
                     android:inputType="textPassword"
                     android:textColor="#000000"
-                    android:textCursorDrawable="@null" />
+                    android:textCursorDrawable="@null"
+                    android:background="@drawable/input_white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/signup_back"
+                android:hint="이메일을 입력해주세요"
+                android:layout_marginTop="10dp"
+                android:textColorHint="#000000"
+                app:boxStrokeColor="#000000"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="#000000"
+                app:hintTextColor="#000000"
+                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                app:startIconTint="#000000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_email_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000000"
+                    android:textCursorDrawable="@null"
+                    android:background="@drawable/input_white"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -128,7 +142,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/circle"
             android:layout_marginTop="30dp"
-            android:text="Signup"
+            android:text="회원가입"
+            android:textSize="25dp"
             android:onClick="register"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"/>

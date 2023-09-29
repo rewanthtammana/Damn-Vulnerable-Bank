@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewBeneficiaryAdmin">
+    tools:context=".ViewBeneficiaryAdmin"
+    android:background="@color/bg_pink"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계좌 현황"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/benif"
         android:layout_width="match_parent"
@@ -17,5 +31,5 @@
         android:gravity="center"
         android:visibility="gone"
         android:textSize="30sp"
-        android:text="You have no active benificiaries to show" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="계좌 정보가 존재하지 않습니다" />
+</LinearLayout>

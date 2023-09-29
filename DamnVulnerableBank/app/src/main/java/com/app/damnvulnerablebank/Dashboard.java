@@ -65,6 +65,10 @@ public class Dashboard extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), CurrencyRates.class));
     }
 
+    public void viewQuestionAndAnswer(View v) {
+        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+//        startActivity(new Intent(getApplicationContext(), QuestionAndAnswer.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
