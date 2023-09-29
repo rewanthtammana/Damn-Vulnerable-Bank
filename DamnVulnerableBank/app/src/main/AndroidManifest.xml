@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Myprofile"></activity>
+
+        <activity android:name=".Myprofile" />
         <activity android:name=".CurrencyRates">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

@@ -32,14 +32,13 @@
                 app:srcCompat="@drawable/done" />
 
 
-
             <TextView
                 android:id="@+id/benif"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Benificiary Account Number"
+                android:text="계좌 번호"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -48,6 +47,7 @@
                 app:layout_constraintStart_toEndOf="@+id/coverImage"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
+
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -56,14 +56,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/isapproved"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="29dp"
-                android:text="Is Approved:"
+                android:text="관리자 승인 여부:"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
