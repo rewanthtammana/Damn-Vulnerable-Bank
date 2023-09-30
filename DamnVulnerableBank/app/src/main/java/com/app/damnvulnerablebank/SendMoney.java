@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
-import static com.app.damnvulnerablebank.ViewBeneficiaryAdmin.beneficiary_account_number;
+import static com.app.damnvulnerablebank.PendingBeneficiary.beneficiary_account_number;
 
 public class SendMoney extends AppCompatActivity {
 
@@ -61,8 +61,8 @@ public class SendMoney extends AppCompatActivity {
         final String url  = sharedPreferences1.getString("apiurl",null);
         String endpoint = "/api/balance/transfer";
         final String finalUrl = url+endpoint;
-        EditText ed = findViewById(R.id.edact);
-        EditText ed1 = findViewById(R.id.edamt);
+        EditText ed = findViewById(R.id.edact);     // 수취계좌
+        EditText ed1 = findViewById(R.id.edamt);    // 이체금액
         int n = 0;
         int na = 0;
 
@@ -80,8 +80,8 @@ public class SendMoney extends AppCompatActivity {
                 startActivity(new Intent(SendMoney.this, SendMoney.class));
             }
             //input your API parameters
-            requestData.put("to_account",n);
-            requestData.put("amount",na);
+            requestData.put("to_account",n);    // 수취계좌
+            requestData.put("amount",na);       // 이체금액
 
             // Encrypt data before sending
             requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));

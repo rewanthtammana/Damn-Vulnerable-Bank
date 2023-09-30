@@ -36,16 +36,16 @@
         <activity android:name=".ResetPassword" />
         <activity android:name=".ViewBeneficiary" />
         <activity android:name=".ApproveBeneficiary" />
-        <activity android:name=".PendingBeneficiary" />
+        <activity android:name=".ViewBeneficiaryAdmin" />
         <activity android:name=".AddBeneficiary" />
         <activity
             android:name=".SendMoney"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ViewBeneficiaryAdmin" />
+                android:value=".PendingBeneficiary" />
         </activity>
-        <activity android:name=".ViewBeneficiaryAdmin" />
+        <activity android:name=".PendingBeneficiary" />
         <activity android:name=".GetTransactions" />
         <activity
             android:name=".ViewBalance"
