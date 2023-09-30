@@ -31,8 +31,8 @@ public class RegisterBank extends AppCompatActivity {
     }
     public void register(View view)
     {
-        EditText inputEmail=findViewById(R.id.signup_email_editText);
         EditText inputUsername=findViewById(R.id.signup_username_editText);
+        EditText inputEmail=findViewById(R.id.signup_email_editText);
         EditText inputPassword=findViewById(R.id.signup_password_editText);
 
         String email = inputEmail.getText().toString().trim();

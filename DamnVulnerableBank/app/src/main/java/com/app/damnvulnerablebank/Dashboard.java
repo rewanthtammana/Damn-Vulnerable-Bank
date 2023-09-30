@@ -39,35 +39,34 @@ public class Dashboard extends AppCompatActivity {
     }
     public void addBeneficiary(View v){
         startActivity(new Intent(getApplicationContext(), AddBeneficiary.class));
-    }
-    public void myprofile(View V){
-        startActivity(new Intent(getApplicationContext(), Myprofile.class));
-    }
-    public void viewbalance(View V){
-        startActivity(new Intent(getApplicationContext(), ViewBalance.class));
-    }
-    public void viewTransactions(View V){
-        startActivity(new Intent(getApplicationContext(), GetTransactions.class));
-    }
-    public void viewBeneficiaryAdmin(View V){
-        startActivity(new Intent(getApplicationContext(), ViewBeneficiaryAdmin.class));
-    }
-    public void getPendingBeneficiaries(View V){
-        startActivity(new Intent(getApplicationContext(), PendingBeneficiary.class));
-    }
+    } // 계좌 추가
     public void viewMyBeneficiaries(View V){
         startActivity(new Intent(getApplicationContext(), ViewBeneficiary.class));
-    }
-    public void resetPassword(View v){
-        startActivity(new Intent(getApplicationContext(), ResetPassword.class));
-    }
+    } // 계좌 확인
+    public void viewbalance(View V){
+        startActivity(new Intent(getApplicationContext(), ViewBalance.class));
+    } // 자산 확인
+    public void getPendingBeneficiaries(View V){
+        startActivity(new Intent(getApplicationContext(), PendingBeneficiary.class));
+    } // 이체
+    public void viewTransactions(View V){
+        startActivity(new Intent(getApplicationContext(), GetTransactions.class));
+    } // 이체 내역
+    public void viewBeneficiaryAdmin(View V){
+        startActivity(new Intent(getApplicationContext(), ViewBeneficiaryAdmin.class));
+    } // 이체 승인
     public void getCurrencyRates(View v){
         startActivity(new Intent(getApplicationContext(), CurrencyRates.class));
-    }
-
+    } // 환율
+    public void resetPassword(View v){
+        startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+    } // 비밀번호 변경
+    public void myprofile(View V){
+        startActivity(new Intent(getApplicationContext(), Myprofile.class));
+    } // 나의 정보
     public void viewQuestionAndAnswer(View v) {
         startActivity(new Intent(getApplicationContext(), QnAView.class));
-    }
+    } // QnA 게시판
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
