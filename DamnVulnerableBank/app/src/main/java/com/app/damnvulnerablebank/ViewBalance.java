@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +38,7 @@ public class ViewBalance extends AppCompatActivity {
         final String url  = sharedPreferences.getString("apiurl",null);
         String endpoint="/api/balance/view";
         String finalurl = url+endpoint;
-
+        DecimalFormat df = new DecimalFormat("###,###");
 
 
         final JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, finalurl,null,
@@ -58,6 +59,8 @@ public class ViewBalance extends AppCompatActivity {
                             JSONObject obj = decryptedResponse.getJSONObject("data");
                             String accountid=obj.getString("account_number");
                             String balance =obj.getString("balance");
+                            int num = Integer.parseInt(balance);
+                            balance = df.format(num);
                             tv.setText(balance + "원");
                         } catch (JSONException e) {
                             e.printStackTrace();
