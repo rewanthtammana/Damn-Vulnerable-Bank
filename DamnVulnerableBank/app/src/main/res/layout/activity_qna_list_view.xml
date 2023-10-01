@@ -1,140 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFD6D6">
+    android:background="#FFD6D6"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/qna_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="QnA 작성"
-        android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/v_title"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/qna_modi_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:background="@drawable/share_round_popup"
-        android:text="수정하기"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="67dp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:gravity="center">
 
-    <Button
-        android:id="@+id/qna_comment_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:background="@drawable/share_round_popup"
-        android:text="댓글"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="67dp" />
+            <TextView
+                android:id="@+id/qna_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="QnA 작성"
+                android:textColor="#000000"
+                android:textSize="25dp" />
 
-    <Button
-        android:id="@+id/qna_del_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:background="@drawable/share_round_popup"
-        android:text="삭제"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="335dp"
-        tools:layout_editor_absoluteY="67dp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/v_title"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/qna_modi_btn"
+                android:layout_width="72dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/share_round_popup"
+                android:text="수정하기"
+                android:textSize="15sp"
+
+                />
+
+            <Button
+                android:id="@+id/qna_comment_btn"
+                android:layout_width="72dp"
+                android:layout_height="32dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/share_round_popup"
+                android:text="댓글"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/qna_del_btn"
+                android:layout_width="72dp"
+                android:layout_height="32dp"
+                android:background="@drawable/share_round_popup"
+                android:text="삭제"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="20dp"
-        android:text="제목"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="115dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/view_title"
-        android:layout_width="277dp"
-        android:layout_height="29dp"
-        android:layout_marginEnd="52dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="115dp" />
+        <TextView
+            android:id="@+id/v_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/qna_v_file_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/share_round_popup"
-        android:text="첨부파일"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_title" />
+        <TextView
+            android:id="@+id/view_title"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/input_white" />
+    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/qna_v_file_lst"
-        android:layout_width="339dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="201dp" />
-
-    <TextView
-        android:id="@+id/v_content"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="23dp"
-        android:text="내용"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qna_v_file_lst" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/view_content"
-        android:layout_width="363dp"
-        android:layout_height="184dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="354dp" />
+        <Button
+            android:id="@+id/qna_v_file_btn"
+            android:layout_width="72dp"
+            android:layout_height="32dp"
+            android:background="@drawable/share_round_popup"
+            android:text="첨부파일"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/v_comment"
-        android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/qna_v_file_lst"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/input_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="댓글"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="552dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/view_comment"
-        android:layout_width="363dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="584dp" />
+        <TextView
+            android:id="@+id/v_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내용"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/view_content"
+            android:layout_width="match_parent"
+            android:layout_height="184dp"
+            android:background="@drawable/input_white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/v_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="댓글"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/view_comment"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:background="@drawable/input_white" />
+    </LinearLayout>
+
+</LinearLayout>
