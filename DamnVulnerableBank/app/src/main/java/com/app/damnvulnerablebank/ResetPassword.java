@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,12 +35,13 @@ public class ResetPassword extends AppCompatActivity {
         setContentView(R.layout.activity_passreset);
     }
 
-    public void backToMain(View view){
+    public void backToMain(View view) {
         // "Back" 버튼을 클릭하면 호출되는 메서드
         // MainActivity로 이동
-        Intent into =new Intent(ResetPassword.this, Dashboard.class);
+        Intent into = new Intent(ResetPassword.this, Dashboard.class);
         startActivity(into);
     }
+
     public void resetPassword(View view) {
         EditText oldPass = findViewById(R.id.oldlogin_password_editText);
         EditText newPass = findViewById(R.id.newlogin_password_editText);
@@ -49,58 +52,76 @@ public class ResetPassword extends AppCompatActivity {
 
         if (!newPassword.equals(newpasswordConfirm)) {
             Toast.makeText(getApplicationContext(), "Something Entered Password is Different", Toast.LENGTH_SHORT).show();
-        }
+        } else {
+            SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
+            final String url = sharedPreferences.getString("apiurl", null);
+            String endpoint = "/api/user/change-password";
+            String finalurl = url + endpoint;
 
-        else{
-        SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
-        final String url = sharedPreferences.getString("apiurl", null);
-        String endpoint = "/api/user/change-password";
-        String finalurl = url + endpoint;
+            final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            JSONObject requestData = new JSONObject();
+            JSONObject requestDataEncrypted = new JSONObject();
+            try {
+                //input your API parameters
+                String hOldPassword = hashPassword(oldPassword);
+                String hNewPassword = hashPassword(newPassword);
+                requestData.put("password", hOldPassword);
+                requestData.put("new_password", hNewPassword);
 
-        final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        JSONObject requestData = new JSONObject();
-        JSONObject requestDataEncrypted = new JSONObject();
-        try {
-            //input your API parameters
-            requestData.put("password", oldPassword);
-            requestData.put("new_password", newPassword);
-
-            // Encrypt data before sending
-            requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        // Enter the correct url for your api service site
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, requestDataEncrypted,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        Toast.makeText(getApplicationContext(),"Done", Toast.LENGTH_SHORT).show();
-                        SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
-                        sharedPreferences.edit().putBoolean("isloggedin", false).apply();
-                        startActivity(new Intent(ResetPassword.this, BankLogin.class));
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                // Encrypt data before sending
+                requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }){
-            @Override
-            public Map getHeaders() throws AuthFailureError {
-                SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
-                final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
-                HashMap headers=new HashMap();
-                headers.put("Authorization","Bearer " + retrivedToken);
-                return headers;
-            }};
+            // Enter the correct url for your api service site
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, finalurl, requestDataEncrypted,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
 
-        requestQueue.add(jsonObjectRequest);
+                            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                            SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
+                            sharedPreferences.edit().putBoolean("isloggedin", false).apply();
+                            startActivity(new Intent(ResetPassword.this, BankLogin.class));
 
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                public Map getHeaders() throws AuthFailureError {
+                    SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
+                    final String retrivedToken = sharedPreferences.getString("accesstoken", null);
+                    HashMap headers = new HashMap();
+                    headers.put("Authorization", "Bearer " + retrivedToken);
+                    return headers;
+                }
+            };
+
+            requestQueue.add(jsonObjectRequest);
+
+        }
     }
+
+    protected static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            return stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
+
 }
 
