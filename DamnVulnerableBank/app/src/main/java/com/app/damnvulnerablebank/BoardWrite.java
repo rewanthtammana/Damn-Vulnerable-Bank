@@ -66,8 +66,8 @@ public class BoardWrite extends AppCompatActivity implements FileAdapter.OnItemC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qna_write);
 
-        title = findViewById(R.id.edit_title);
-        content = findViewById(R.id.content_write);
+        title = findViewById(R.id.w_write_title);
+        content = findViewById(R.id.w_write_content);
 
         intent = getIntent();
 
@@ -79,12 +79,12 @@ public class BoardWrite extends AppCompatActivity implements FileAdapter.OnItemC
         title.setText(subject);
         content.setText(contents);
 
-        writeBtn = findViewById(R.id.qna_write_btn);
+        writeBtn = findViewById(R.id.qna_w_write_btn);
         if(rewrite){
             writeBtn.setText("수정");
         }
 
-        recyclerView = findViewById(R.id.files_write);
+        recyclerView = findViewById(R.id.qna_w_file_lst);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if(fileInfoArray==null){
             fileInfoArray = new ArrayList<FileInfo>();

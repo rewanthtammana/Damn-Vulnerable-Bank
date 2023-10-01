@@ -7,156 +7,134 @@
     android:background="#FFD6D6">
 
     <TextView
-        android:id="@+id/qna_list_view"
+        android:id="@+id/qna_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
-        android:text="QnA 글 작성"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="QnA 작성"
+        android:textColor="#000000"
         android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/v_title"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/qna_list_edit_btn"
-        android:layout_width="80dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="196dp"
+        android:id="@+id/qna_modi_btn"
+        android:layout_width="72dp"
+        android:layout_height="32dp"
         android:background="@drawable/share_round_popup"
         android:text="수정하기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="67dp" />
 
     <Button
-        android:id="@+id/qna_list_comment_btn"
-        android:layout_width="80dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="116dp"
+        android:id="@+id/qna_comment_btn"
+        android:layout_width="72dp"
+        android:layout_height="32dp"
         android:background="@drawable/share_round_popup"
         android:text="댓글"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="67dp" />
 
     <Button
-        android:id="@+id/qna_list_del_btn"
-        android:layout_width="80dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="36dp"
+        android:id="@+id/qna_del_btn"
+        android:layout_width="72dp"
+        android:layout_height="32dp"
         android:background="@drawable/share_round_popup"
         android:text="삭제"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="335dp"
+        tools:layout_editor_absoluteY="67dp" />
 
     <TextView
-        android:id="@+id/subject"
+        android:id="@+id/v_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="171dp"
-        android:layout_marginEnd="284dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/qna_list_title"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/qna_list_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="제목"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="171dp" />
-
-    <TextView
-        android:id="@+id/qna_list_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="내용"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="333dp" />
-
-    <EditText
-        android:id="@+id/edit_list_content"
-        android:layout_width="345dp"
-        android:layout_height="170dp"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/boxline"
-        android:backgroundTint="#FFFFFF"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginEnd="20dp"
+        android:text="제목"
+        android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="366dp" />
+        tools:layout_editor_absoluteY="115dp" />
 
     <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="378dp" />
+        android:id="@+id/view_title"
+        android:layout_width="277dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/input_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="115dp" />
 
     <Button
-        android:id="@+id/files_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="첨부파일"
-        android:background="@drawable/share_round_popup"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="202dp" />
-
-    <EditText
-        android:id="@+id/edit_list_files"
-        android:layout_width="295dp"
-        android:layout_height="56dp"
+        android:id="@+id/qna_v_file_btn"
+        android:layout_width="72dp"
+        android:layout_height="32dp"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/boxline"
-        android:backgroundTint="#FFFFFF"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/share_round_popup"
+        android:text="첨부파일"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="257dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view_title" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/files"
-        android:layout_width="311dp"
-        android:layout_height="56dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="257dp" />
-
-    <TextView
-        android:id="@+id/comment_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="댓글"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="559dp" />
-
-    <EditText
-        android:id="@+id/edit_list_comment"
-        android:layout_width="295dp"
-        android:layout_height="56dp"
+        android:id="@+id/qna_v_file_lst"
+        android:layout_width="339dp"
+        android:layout_height="88dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/boxline"
-        android:backgroundTint="#FFFFFF"
-        android:inputType="text"
+        android:background="@drawable/input_white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="596dp" />
+        tools:layout_editor_absoluteY="201dp" />
 
     <TextView
-        android:id="@+id/edit_list_comment_t"
+        android:id="@+id/v_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="601dp" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="23dp"
+        android:text="내용"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qna_v_file_lst" />
 
+    <TextView
+        android:id="@+id/view_content"
+        android:layout_width="363dp"
+        android:layout_height="184dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/input_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <TextView
+        android:id="@+id/v_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:text="댓글"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="552dp" />
+
+    <TextView
+        android:id="@+id/view_comment"
+        android:layout_width="363dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/input_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="584dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
