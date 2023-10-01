@@ -30,6 +30,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -40,6 +42,8 @@ public class SendMoney extends AppCompatActivity {
 
     Button send;
     TextView tt;
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,7 @@ public class SendMoney extends AppCompatActivity {
         String p=i.getStringExtra(beneficiary_account_number);
         tt.setText(p);
         send=findViewById(R.id.sendbutton);
+        Log.d("sendmoney", "Hello Sendmoney.class");
     }
 
 
@@ -63,8 +68,9 @@ public class SendMoney extends AppCompatActivity {
         final String finalUrl = url+endpoint;
         EditText ed = findViewById(R.id.edact);     // 수취계좌
         EditText ed1 = findViewById(R.id.edamt);    // 이체금액
-        int n = 0;
-        int na = 0;
+        int to_account = 0;
+        int amount = 0;
+        String sendtime = dateFormat.format(currentDate);
 
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject requestData = new JSONObject();
@@ -73,15 +79,17 @@ public class SendMoney extends AppCompatActivity {
 
             // fetch values
             if (ed.getText().toString() != "" && ed1.getText().toString() != "") {
-                n = Integer.parseInt(ed.getText().toString());
-                na = Integer.parseInt(ed1.getText().toString());
+                to_account = Integer.parseInt(ed.getText().toString());
+                amount = Integer.parseInt(ed1.getText().toString());
             } else {
                 Toast.makeText(getApplicationContext(), "Invalid Input ", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(SendMoney.this, SendMoney.class));
             }
             //input your API parameters
-            requestData.put("to_account",n);    // 수취계좌
-            requestData.put("amount",na);       // 이체금액
+            requestData.put("to_account", to_account);          // 수취계좌 varchar
+            requestData.put("amount", amount);                  // 이체금액 int
+            requestData.put("sendtime", sendtime);              // 전송시간 datetime
+
 
             // Encrypt data before sending
             requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
@@ -96,15 +104,15 @@ public class SendMoney extends AppCompatActivity {
 
                         try {
 
-                        JSONObject decryptedResponse =  new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
-                        Log.d("Send Money", decryptedResponse.toString());
+                            JSONObject decryptedResponse =  new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
+                            Log.d("Send Money", decryptedResponse.toString());
 
-                        if(decryptedResponse.getJSONObject("status").getInt("code") != 200) {
-                            Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                            if(decryptedResponse.getJSONObject("status").getInt("code") != 200) {
+                                Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
 
-                            return;
-                            // This is buggy. Need to call Login activity again if incorrect credentials are given
-                        }
+                                return;
+                                // This is buggy. Need to call Login activity again if incorrect credentials are given
+                            }
 
 
 
@@ -120,7 +128,7 @@ public class SendMoney extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong[Send]", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -140,7 +148,7 @@ public class SendMoney extends AppCompatActivity {
 
 
     public void Biometrics(View view){
-         BiometricManager biometricManager = BiometricManager.from(this);
+        BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate()){
 
             case BiometricManager.BIOMETRIC_SUCCESS:
@@ -193,7 +201,7 @@ public class SendMoney extends AppCompatActivity {
 
 
 
-                biometricPrompt.authenticate(promptInfo);
+        biometricPrompt.authenticate(promptInfo);
 
 
 
