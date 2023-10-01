@@ -1,96 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFD6D6">
+    android:background="#FFD6D6"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/qna_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="QnA 게시판"
-        android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/announcement_text"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/qna_write_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:background="@drawable/share_round_popup"
-        android:text="글작성"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="56dp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/announcement_text"
-        android:layout_width="373dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintBottom_toTopOf="@+id/qna_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/qna_list"
-        android:layout_width="356dp"
-        android:layout_height="410dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/qna_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QnA 게시판"
+                android:textColor="#000000"
+                android:textSize="25dp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/qna_write_btn"
+                android:layout_width="72dp"
+                android:layout_height="32dp"
+                android:background="@drawable/share_round_popup"
+                android:text="글작성"
+                android:onClick="writeQnA"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:text="글번호"
-        android:background="@drawable/share_round_popup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/announcement_text" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/announcement_text"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/input_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/share_round_popup">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="글번호"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center">>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/share_round_popup"
+                android:text="제목"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/share_round_popup"
+                android:text="작성자"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/share_round_popup"
+                android:text="작성시간"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="제목"
-        android:background="@drawable/share_round_popup"
-        app:layout_constraintTop_toBottomOf="@+id/announcement_text"
-        tools:layout_editor_absoluteX="153dp" />
+        android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/share_round_popup"
-        android:text="작성자"
-        app:layout_constraintTop_toBottomOf="@+id/announcement_text"
-        tools:layout_editor_absoluteX="258dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/qna_list"
+            android:layout_width="match_parent"
+            android:layout_height="410dp"
+            android:background="@drawable/input_white" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/share_round_popup"
-        android:text="작성시간"
-        app:layout_constraintTop_toBottomOf="@+id/announcement_text"
-        tools:layout_editor_absoluteX="322dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,102 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFD6D6">
+    android:background="#FFD6D6"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/qna_w_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="QnA 작성"
-        android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/w_write_title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/qna_w_write_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:background="@drawable/share_round_popup"
-        android:text="글작성"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="56dp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/w_title"
-        android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/qna_w_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QnA 작성"
+                android:textColor="#000000"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="right|center">
+
+            <Button
+                android:id="@+id/qna_w_write_btn"
+                android:layout_width="72dp"
+                android:layout_height="32dp"
+                android:background="@drawable/share_round_popup"
+                android:text="완료" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="20dp"
-        android:text="제목"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/w_write_title"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="115dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/w_write_title"
-        android:layout_width="277dp"
-        android:layout_height="29dp"
-        android:layout_marginEnd="52dp"
-        android:background="@drawable/input_white"
-        android:hint="제목을 입력하세요."
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="115dp" />
+        <TextView
+            android:id="@+id/w_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/qna_w_file_btn"
-        android:layout_width="72dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/share_round_popup"
-        android:text="첨부파일"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/w_write_title" />
+        <EditText
+            android:id="@+id/w_write_title"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/input_white"
+            android:hint="팀장이 괴롭힌다.ㅠㅠㅠㅠ 복수한다." />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/qna_w_file_lst"
-        android:layout_width="339dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/input_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="201dp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/w_content"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="23dp"
-        android:text="내용"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qna_w_file_lst" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/w_write_content"
-        android:layout_width="367dp"
-        android:layout_height="343dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/input_white"
-        android:hint="내용을 입력하세요."
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="354dp" />
+        <Button
+            android:id="@+id/qna_w_file_btn"
+            android:layout_width="72dp"
+            android:layout_height="32dp"
+            android:background="@drawable/share_round_popup"
+            android:text="첨부파일"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/qna_w_file_lst"
+            android:layout_width="339dp"
+            android:layout_height="88dp"
+            android:background="@drawable/input_white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/w_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내용"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/w_write_content"
+            android:layout_width="match_parent"
+            android:layout_height="343dp"
+            android:background="@drawable/input_white"
+            android:hint="내용을 입력하세요."
+            android:textStyle="bold"
+            android:gravity="top"/>
+    </LinearLayout>
+
+</LinearLayout>
