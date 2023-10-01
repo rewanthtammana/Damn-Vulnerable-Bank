@@ -27,6 +27,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class BankLogin extends AppCompatActivity {
 
     private ProgressBar spinner;
@@ -52,6 +55,8 @@ public class BankLogin extends AppCompatActivity {
         spinner.setVisibility(View.VISIBLE);
         final String email = inputEmail.getText().toString().trim();
         final String password = inputPassword.getText().toString().trim();
+        final String hPassword = hashPassword(password);
+
 
         // SharedPreferences를 사용하여 저장된 API URL을 가져옴
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
@@ -66,7 +71,7 @@ public class BankLogin extends AppCompatActivity {
         try {
             // Input your API parameters
             requestData.put("username",email);
-            requestData.put("password",password);
+            requestData.put("password",hPassword);
 
             // Encrypt data before sending
             // 데이터를 암호화
@@ -127,4 +132,21 @@ public class BankLogin extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
     }
+
+    protected static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            return stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

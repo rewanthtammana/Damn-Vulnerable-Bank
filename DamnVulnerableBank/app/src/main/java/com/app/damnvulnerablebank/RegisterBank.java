@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class RegisterBank extends AppCompatActivity {
     FirebaseAuth auth;
@@ -38,11 +42,14 @@ public class RegisterBank extends AppCompatActivity {
         String email = inputEmail.getText().toString().trim();
         String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
+        String hPassword = hashPassword(password);
 
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url = sharedPreferences.getString("apiurl",null);
         String endpoint = "/api/user/register";
         String finalUrl = url + endpoint;
+        Log.d("url", url);
+        Log.d("finalurl", finalUrl);
 
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject requestData = new JSONObject();
@@ -51,8 +58,10 @@ public class RegisterBank extends AppCompatActivity {
             //input your API parameters
             requestData.put("email", email);
             requestData.put("username", username);
-            requestData.put("password", password);
-
+            requestData.put("password", hPassword);
+            Log.d("email", email);
+            Log.d("username", username);
+            Log.d("password", hPassword);
             // Encrypt data before sending
             requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
         } catch (JSONException e) {
@@ -79,9 +88,6 @@ public class RegisterBank extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
 
-
-
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,4 +95,19 @@ public class RegisterBank extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
     }
 
+    protected static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            return stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
