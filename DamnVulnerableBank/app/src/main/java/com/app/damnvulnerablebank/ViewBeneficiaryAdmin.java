@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,36 +31,40 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ViewBeneficiaryAdmin extends AppCompatActivity  implements Badapter.OnItemClickListener {
-public static final String beneficiary_account_number="beneficiary_account_number";
+public class ViewBeneficiaryAdmin extends AppCompatActivity implements Padapter.OnItemClickListener{
+    public static final String id="id";
     RecyclerView recyclerView;
-    List<BeneficiaryRecords> brecords;
+    List<PendingBeneficiaryRecords> precords;
     private TextView emptyView;
-    Badapter badapter;
+    Padapter padapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewbenif);
-        recyclerView=findViewById(R.id.benif);
-        emptyView=findViewById(R.id.empty_view);
-        brecords=new ArrayList<>();
-        viewBeneficiaries();
+        setContentView(R.layout.activity_pendingbenificiary);
+        recyclerView=findViewById(R.id.pendb);
+        precords=new ArrayList<>();
+        emptyView = findViewById(R.id.empty_view);
+        getPendingBeneficiaries();
     }
-    public void viewBeneficiaries(){
+
+    public void getPendingBeneficiaries(){
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
-        final String url = sharedPreferences.getString("apiurl",null);
-        String endpoint = "/api/beneficiary/view";
-        final String finalurl = url+endpoint;
+        final String url  = sharedPreferences.getString("apiurl",null);
+        String endpoint = "/api/beneficiary/pending";
+        String finalUrl = url + endpoint;
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalurl, null,
+        JsonObjectRequest jsonArrayRequest=new JsonObjectRequest(Request.Method.POST, finalUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 
                         try {
+
                             JSONObject decryptedResponse = new JSONObject(EncryptDecrypt.decrypt(response.get("enc_data").toString()));
 
+                            Log.d("Pending Beneficiary", decryptedResponse.toString());
+//                            Log.d("Pending Beneficiary", decryptedResponse.getJSONObject("status").getInt("code"));
                             // Check for error message
                             if(decryptedResponse.getJSONObject("status").getInt("code") != 200) {
                                 Toast.makeText(getApplicationContext(), "Error: " + decryptedResponse.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
@@ -66,17 +72,16 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                                 // This is buggy. Need to call Login activity again if incorrect credentials are given
                             }
 
-                            JSONArray jsonArray=decryptedResponse.getJSONArray("data");
-                            for(int i=0;i<jsonArray.length();i++) {
+                            JSONArray jsonArray = decryptedResponse .getJSONArray("data");
+
+                            for(int i=0; i < jsonArray.length(); i++) {
+
                                 JSONObject transrecobject = jsonArray.getJSONObject(i);
-                                BeneficiaryRecords brecorder = new BeneficiaryRecords();
-                                String approved=transrecobject.getString("approved").toString();
-                                if(approved=="false")
-                                {continue;}
-                                else{
-                                brecorder.setBeneficiaryAccount(transrecobject.getString("beneficiary_account_number").toString());
-                                //brecorder.setIsapproved(transrecobject.getString("approved").toString());
-                                brecords.add(brecorder);}
+                                PendingBeneficiaryRecords precorder = new PendingBeneficiaryRecords();
+                                precorder.setAccountNumber(transrecobject.getString("account_number").toString());
+                                precorder.setBeneficiaryAccountNumber(transrecobject.getString("beneficiary_account_number").toString());
+                                precorder.setId(transrecobject.getString("id").toString());
+                                precords.add(precorder);
                             }
 
                         } catch (JSONException e) {
@@ -84,10 +89,10 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                         }
 
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        badapter=new Badapter(getApplicationContext(),brecords);
-                        recyclerView.setAdapter(badapter);
-
-                        Integer count=badapter.getItemCount();
+                        padapter = new Padapter(getApplicationContext(),precords);
+                        recyclerView.setAdapter(padapter);
+                        padapter.setOnItemClickListener(ViewBeneficiaryAdmin.this);
+                        Integer count=padapter.getItemCount();
                         if (count == 0) {
                             recyclerView.setVisibility(View.GONE);
                             emptyView.setVisibility(View.VISIBLE);
@@ -96,7 +101,7 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
                             recyclerView.setVisibility(View.VISIBLE);
                             emptyView.setVisibility(View.GONE);
                         }
-                        badapter.setOnItemClickListener(ViewBeneficiaryAdmin.this);
+
                     }
 
                 }, new Response.ErrorListener() {
@@ -108,9 +113,9 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
             @Override
             public Map getHeaders() throws AuthFailureError {
                 SharedPreferences sharedPreferences = getSharedPreferences("jwt", Context.MODE_PRIVATE);
-                final String retrivedToken  = sharedPreferences.getString("accesstoken",null);
-                HashMap headers=new HashMap();
-                headers.put("Authorization","Bearer "+retrivedToken);
+                final String retrivedToken = sharedPreferences.getString("accesstoken",null);
+                HashMap headers = new HashMap();
+                headers.put("Authorization","Bearer " + retrivedToken);
                 return headers;
             }};
 
@@ -120,10 +125,9 @@ public static final String beneficiary_account_number="beneficiary_account_numbe
 
     @Override
     public void onItemClick(int position) {
-        Intent de=new Intent(this, SendMoney.class);
-        BeneficiaryRecords cf =brecords.get(position);
-
-        de.putExtra(beneficiary_account_number,cf.getBeneficiaryAccount());
+        Intent de=new Intent(this, ApproveBeneficiary.class);
+        PendingBeneficiaryRecords cf =precords.get(position);
+        de.putExtra(id,cf.getId());
         startActivity(de);
     }
 }

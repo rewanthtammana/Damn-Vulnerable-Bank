@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shadow"
+    android:backgroundTint="@color/bg_pink"
+    android:orientation="vertical"
     tools:context=".SendMoney">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_marginTop="200dp"
-        android:layout_width="89dp"
-        android:layout_marginLeft="150dp"
-        android:layout_height="61dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
         app:srcCompat="@drawable/person" />
 
 
@@ -21,42 +23,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-        android:layout_marginLeft="155dp"
-        android:textStyle="bold"
-        android:textSize="22sp"/>
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edact"
-        android:layout_marginTop="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/actid"
-        android:layout_marginLeft="100dp"
-        android:hint="Enter Account Number Again"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:hint="계좌번호를 다시 한번 입력해주세요"
         android:inputType="numberDecimal"
-        android:textStyle="bold"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edamt"
-        android:layout_marginTop="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edact"
-        android:layout_marginLeft="140dp"
-        android:hint="Enter Amount"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:hint="금액을 입력해주세요"
         android:inputType="numberDecimal"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/sendbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/circle"
-        android:textColor="@color/white"
         android:layout_below="@+id/edamt"
+        android:layout_gravity="center"
         android:layout_marginTop="12dp"
+        android:background="@drawable/share_round_popup"
         android:onClick="Biometrics"
-        android:layout_marginLeft="155dp"
-        android:text="Send Money"/>
-</RelativeLayout>
+        android:text="이체 하기"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+</LinearLayout>

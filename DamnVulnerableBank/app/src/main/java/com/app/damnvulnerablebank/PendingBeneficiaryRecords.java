@@ -12,7 +12,7 @@ public class PendingBeneficiaryRecords {
     }
 
     public void setAccountNumber(String account_number) {
-        this.account_number = "Account Number\t\t:"+account_number;
+        this.account_number = "보내는 분:\t:"+account_number;
     }
 
     public String getBeneficiaryAccountNumber() {
@@ -20,7 +20,7 @@ public class PendingBeneficiaryRecords {
     }
 
     public void setBeneficiaryAccountNumber(String beneficiary_account_number) {
-        this.beneficiary_account_number = "Benificiary Account Number\t\t:"+beneficiary_account_number+"\n";
+        this.beneficiary_account_number = "받는 분:\t:"+beneficiary_account_number+"\n";
     }
 
     public String getId() {
@@ -31,6 +31,6 @@ public class PendingBeneficiaryRecords {
         this.id = "ID\t\t:" + id;
     }
 
-    public PendingBeneficiaryRecords(String account_number, String    beneficiary_account_number, String idd){}
+    public PendingBeneficiaryRecords(String account_number, String beneficiary_account_number, String idd){}
 
 }

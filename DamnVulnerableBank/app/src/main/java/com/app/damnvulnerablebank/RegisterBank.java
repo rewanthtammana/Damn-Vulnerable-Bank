@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,8 +23,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class RegisterBank extends AppCompatActivity {
     FirebaseAuth auth;
+    Date currentDate = new Date();    // 현재 시간을 받아옵니다.
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    // SimpleDateFormat을 사용하여 날짜 형식을 포맷팅합니다.
 
     public void backToMain(View view){
         Intent intent =new Intent(RegisterBank.this, MainActivity.class);
@@ -31,13 +39,15 @@ public class RegisterBank extends AppCompatActivity {
     }
     public void register(View view)
     {
-        EditText inputEmail=findViewById(R.id.signup_email_editText);
         EditText inputUsername=findViewById(R.id.signup_username_editText);
+        EditText inputEmail=findViewById(R.id.signup_email_editText);
         EditText inputPassword=findViewById(R.id.signup_password_editText);
 
         String email = inputEmail.getText().toString().trim();
         String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
+        String hPassword = hashPassword(password);
+        String sendtime = dateFormat.format(currentDate);
 
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url = sharedPreferences.getString("apiurl",null);
@@ -51,8 +61,8 @@ public class RegisterBank extends AppCompatActivity {
             //input your API parameters
             requestData.put("email", email);
             requestData.put("username", username);
-            requestData.put("password", password);
-
+            requestData.put("password", hPassword);
+            requestData.put("sendtime", sendtime);
             // Encrypt data before sending
             requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
         } catch (JSONException e) {
@@ -79,9 +89,6 @@ public class RegisterBank extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
 
-
-
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,4 +96,19 @@ public class RegisterBank extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
     }
 
+    protected static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            return stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

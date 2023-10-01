@@ -2,6 +2,7 @@ package com.app.damnvulnerablebank;
 // 암호화
 
 import android.util.Base64;
+import android.util.Log;
 
 public class EncryptDecrypt {
     static public String secret = "amazing";
@@ -23,7 +24,6 @@ public class EncryptDecrypt {
         // base64
         String encVal = operate(input);
         String val = Base64.encodeToString(encVal.getBytes(),0);
-
         return val;
     }
 
