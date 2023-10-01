@@ -15,7 +15,7 @@
         android:text="QnA 작성"
         android:textColor="#000000"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintBottom_toTopOf="@+id/w_write_title"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
@@ -36,12 +36,12 @@
         android:text="제목"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/w_write_title"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="115dp" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/w_write_title"
         android:layout_width="277dp"
         android:layout_height="29dp"
         android:layout_marginEnd="52dp"
@@ -60,7 +60,7 @@
         android:text="첨부파일"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/w_write_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qna_w_file_lst"

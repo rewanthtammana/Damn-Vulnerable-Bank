@@ -36,7 +36,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/subject"
+                android:id="@+id/qna_v_file_lst"
                 android:layout_width="156dp"
                 android:layout_height="33dp"
                 android:layout_marginTop="8dp"
