@@ -63,9 +63,9 @@ public class BoardListView extends AppCompatActivity implements FileAdapter.OnIt
         String finalurl = url+endpoint;
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        final TextView subjectView=findViewById(R.id.subject);
-        final TextView contentView=findViewById(R.id.content);
-        recyclerView = findViewById(R.id.files);
+        final TextView subjectView=findViewById(R.id.qna_v_file_lst);
+        final TextView contentView=findViewById(R.id.view_content);
+        recyclerView = findViewById(R.id.qna_v_file_lst);
 
         JSONObject requestData = new JSONObject();
         JSONObject requestDataEncrypted = new JSONObject();
