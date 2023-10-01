@@ -25,9 +25,13 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RegisterBank extends AppCompatActivity {
     FirebaseAuth auth;
+    Date currentDate = new Date();    // 현재 시간을 받아옵니다.
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    // SimpleDateFormat을 사용하여 날짜 형식을 포맷팅합니다.
 
     public void backToMain(View view){
         Intent intent =new Intent(RegisterBank.this, MainActivity.class);
@@ -43,13 +47,12 @@ public class RegisterBank extends AppCompatActivity {
         String username = inputUsername.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
         String hPassword = hashPassword(password);
+        String sendtime = dateFormat.format(currentDate);
 
         SharedPreferences sharedPreferences = getSharedPreferences("apiurl", Context.MODE_PRIVATE);
         final String url = sharedPreferences.getString("apiurl",null);
         String endpoint = "/api/user/register";
         String finalUrl = url + endpoint;
-        Log.d("url", url);
-        Log.d("finalurl", finalUrl);
 
         final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject requestData = new JSONObject();
@@ -59,9 +62,7 @@ public class RegisterBank extends AppCompatActivity {
             requestData.put("email", email);
             requestData.put("username", username);
             requestData.put("password", hPassword);
-            Log.d("email", email);
-            Log.d("username", username);
-            Log.d("password", hPassword);
+            requestData.put("sendtime", sendtime);
             // Encrypt data before sending
             requestDataEncrypted.put("enc_data", EncryptDecrypt.encrypt(requestData.toString()));
         } catch (JSONException e) {

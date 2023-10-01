@@ -32,7 +32,6 @@ public class EncryptDecrypt {
         byte[] decodeByte = Base64.decode(input,0);
         String decodeString = new String(decodeByte);
         String decryptString = operate(decodeString);
-        Log.d("decryptString", decryptString);
 
         return decryptString;
     }
