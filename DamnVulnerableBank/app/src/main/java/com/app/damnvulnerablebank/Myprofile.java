@@ -64,13 +64,13 @@ public class Myprofile extends AppCompatActivity {
                             String account_number =obj.getString("account_number");
                             String username =obj.getString("username");
                             String is_admin =obj.getString("is_admin");
-                            tv1.setText("Name:\t\t" + username);
-                            tv2.setText("Account Number:\t\t" + account_number);
-                            tv3.setText("Balance:\t\t$" +balance);
+                            tv1.setText("\t" + username);
+                            tv2.setText("\t" + account_number);
+                            tv3.setText("\t" +balance + "\\");
                             if(is_admin == "true") {
-                                tv4.setText("Admin:\t\tYes");
+                                tv4.setText("\t승인");
                             } else {
-                                tv4.setText("Admin:\t\tNo");
+                                tv4.setText("\t거부");
                             }
 
 
