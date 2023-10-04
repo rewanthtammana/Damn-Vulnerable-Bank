@@ -105,8 +105,11 @@ public class BoardWrite extends AppCompatActivity implements FileAdapter.OnItemC
 
     public void writePost(View view) {
         String endpoint;
+        //String postTitle = title.getText().toString();
+        //String postContent = content.getText().toString();
         JSONObject requestData;
         JSONObject requestDataEncrypted;
+
         if (rewrite) {
             endpoint = url + "/api/qna/rewrite";
             requestData = new JSONObject();

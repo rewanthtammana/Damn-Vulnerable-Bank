@@ -65,7 +65,7 @@ public class Dashboard extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), Myprofile.class));
     } // 나의 정보
     public void viewQuestionAndAnswer(View v) {
-        startActivity(new Intent(getApplicationContext(), QnAView.class));
+        startActivity(new Intent(getApplicationContext(), BoardView.class));
     } // QnA 게시판
 
     @Override
