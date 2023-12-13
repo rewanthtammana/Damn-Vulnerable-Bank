@@ -17,7 +17,7 @@ extra_css:
 extra:
   analytics:
     provider: google
-    property: UA-198321670-1
+    property: G-14QSG55C6R
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/rewanthtammana/damn-vulnerable-bank
